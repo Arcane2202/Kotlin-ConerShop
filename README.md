@@ -2,7 +2,7 @@
 A Project Using Kotlin and Android Studio
 
 # Made By 
-Mirza Mahir Faiaz\n
+Mirza Mahir Faiaz<br />
 Tanveer Shams\n
 Syeda Sohi\n
 Tabassum Jahan Lamia\n
