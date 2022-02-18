@@ -15,7 +15,7 @@ Email: 190204064@aust.edu<br /<br />
 -Symum Hossain<br />
 Email: 190204105@aust.edu<br /><br />
 
-We all are students of CSE dept. at Ahsanullah University Of Science and Technology(AUST).
+We all are students of CSE dept. at Ahsanullah University Of Science and Technology(AUST). We made this project for our CSE2200 Software Development Lab.
 
 
  
