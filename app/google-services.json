@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "827710735710",
+    "project_id": "cornershopmanagement",
+    "storage_bucket": "cornershopmanagement.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827710735710:android:8026d9860df42dd256bbcf",
+        "android_client_info": {
+          "package_name": "project.app.cornershop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827710735710-dnfphpd9kdqfpceoa66q6ullo3t4lomc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCC6Sv1yMBWX9m_axKNhaAWE2wkup5-KI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827710735710-dnfphpd9kdqfpceoa66q6ullo3t4lomc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
