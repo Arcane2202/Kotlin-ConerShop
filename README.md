@@ -2,9 +2,9 @@
 A Project Using Kotlin and Android Studio
 
 # Made By 
--Syeda Sohi<br />
+-Syeda Farhana Ali<br />
 Email: 190204027@aust.edu<br />
--Tanveer Shams<br />
+-Mohammad Tanveer Shams<br />
 Email: 190204060@aust.edu<br />
 -Redowan Rahman<br />
 Email: 190204064@aust.edu<br />
