@@ -49,11 +49,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/Phone"
-            android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
 
         <EditText
-            android:id="@+id/Pass"
+            android:id="@+id/SignupPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/dropdownBox"
@@ -66,40 +65,39 @@
             android:id="@+id/ConfirmPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Pass"
+            android:layout_below="@id/SignupPass"
             android:layout_marginBottom="30dp"
             android:ems="50"
             android:hint="Confirm Password"
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/loginButtom"
+            android:id="@+id/confirmSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/ConfirmPass"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="65dp"
+            android:backgroundTint="#455765"
             android:fontFamily="sans-serif-light"
             android:paddingLeft="20dp"
             android:text="Confirm"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:backgroundTint="#455765"
-            android:textSize="22dp" />
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/signup"
+        android:id="@+id/loginnow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already have an account?"
-        android:textSize="15dp"
-        android:onClick="LogIn"
-        android:clickable="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        />
+        android:clickable="true"
+        android:onClick="LogIn"
+        android:text="Already have an account?"
+        android:textSize="15dp" />
 </RelativeLayout>
