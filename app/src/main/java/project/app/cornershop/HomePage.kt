@@ -10,7 +10,7 @@ class HomePage : AppCompatActivity() {
         setContentView(R.layout.activity_home_page)
         var nam = intent.getStringExtra("uNam")
         val show =findViewById<TextView>(R.id.welcm)
-        nam = show.text.toString()+nam
+        nam = show.text.toString()+nam+"!"
         show.setText(nam)
     }
 }
