@@ -22,7 +22,7 @@ class Registration : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
         dropdownSelect = findViewById(R.id.dropdownBox)
-        val items = arrayOf("Select Area", "Dhanmondi", "Mohammadpur", "Shyamoli", "Moghbazar")
+        val items = arrayOf("Select Area", "Dhanmondi", "Mohammadpur", "Shyamoli", "Moghbazar","Gulshan")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         dropdownSelect.adapter = adapter
         dropdownSelect.setSelection(0)
@@ -72,6 +72,7 @@ class Registration : AppCompatActivity() {
                                 "Successfully Signed Up!",
                                 Toast.LENGTH_LONG
                             ).show()
+
                             finish()
                         }.addOnFailureListener {
                             Toast.makeText(this@Registration, "Sign-Up Failed!", Toast.LENGTH_LONG)
