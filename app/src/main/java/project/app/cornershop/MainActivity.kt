@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var PhoneNo: EditText
     private lateinit var Pasword: EditText
     private lateinit var signinClicked: Button
+    private lateinit var logo: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         PhoneNo = findViewById(R.id.Phone)
         Pasword = findViewById(R.id.LoginPass)
+        logo = findViewById(R.id.login)
 
         signup_click.setOnClickListener(View.OnClickListener {
             var intent = Intent(this@MainActivity, Registration::class.java)
