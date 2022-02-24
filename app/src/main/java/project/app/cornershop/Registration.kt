@@ -36,6 +36,11 @@ class Registration : AppCompatActivity() {
 
         signin_click.setOnClickListener(View.OnClickListener {
             var intent = Intent(this@Registration, MainActivity::class.java)
+            fullName.text.clear()
+            PhonNo.text.clear()
+            Password.text.clear()
+            ConfirmPassword.text.clear()
+            dropdownSelect.setSelection(0)
             startActivity(intent)
         })
 
@@ -67,16 +72,15 @@ class Registration : AppCompatActivity() {
                     } else {
                         val users = User(uName, uPhone, area, passwrd)
                         database.child(uPhone).setValue(users).addOnSuccessListener {
-                            Toast.makeText(
-                                this@Registration,
-                                "Successfully Signed Up!",
-                                Toast.LENGTH_LONG
-                            ).show()
-
+                            Toast.makeText(this@Registration, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
+                            fullName.text.clear()
+                            PhonNo.text.clear()
+                            Password.text.clear()
+                            ConfirmPassword.text.clear()
+                            dropdownSelect.setSelection(0)
                             finish()
                         }.addOnFailureListener {
-                            Toast.makeText(this@Registration, "Sign-Up Failed!", Toast.LENGTH_LONG)
-                                .show()
+                            Toast.makeText(this@Registration, "Sign-Up Failed!", Toast.LENGTH_LONG).show()
                         }
                     }
                 }

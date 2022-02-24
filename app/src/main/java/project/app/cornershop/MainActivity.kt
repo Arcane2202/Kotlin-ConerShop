@@ -23,13 +23,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val signup_click =findViewById<TextView>(R.id.signup)
-        signup_click.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this@MainActivity, Registration::class.java)
-            startActivity(intent)
-        })
 
         PhoneNo = findViewById(R.id.Phone)
         Pasword = findViewById(R.id.LoginPass)
+
+        signup_click.setOnClickListener(View.OnClickListener {
+            var intent = Intent(this@MainActivity, Registration::class.java)
+            PhoneNo.text.clear()
+            Pasword.text.clear()
+            startActivity(intent)
+        })
+
+
         signinClicked = findViewById(R.id.loginButton)
 
         signinClicked.setOnClickListener{
@@ -46,12 +51,17 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
                         var intent = Intent(this@MainActivity, HomePage::class.java)
                         intent.putExtra("uNam",it.child("name").value.toString())
+                        PhoneNo.text.clear()
+                        Pasword.text.clear()
                         startActivity(intent)
                     } else {
                         Toast.makeText(this@MainActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
+                        Pasword.text.clear()
                     }
                 } else {
                     Toast.makeText(this@MainActivity, "No user found with this phone number", Toast.LENGTH_LONG).show()
+                    PhoneNo.text.clear()
+                    Pasword.text.clear()
                 }
             }.addOnFailureListener{
                 Toast.makeText(this@MainActivity, "Login Failed", Toast.LENGTH_LONG).show()
