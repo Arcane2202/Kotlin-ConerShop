@@ -3,9 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Corner_Shop/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3453125" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3453125" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_home_page.xml" value="0.309375" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_registration.xml" value="0.23731884057971014" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_sign_in.xml" value="0.29270833333333335" />
         <entry key="..\:/Users/tanve/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_home_page.xml" value="0.3625" />
         <entry key="..\:/Users/tanve/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/tanve/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_registration.xml" value="0.3625" />

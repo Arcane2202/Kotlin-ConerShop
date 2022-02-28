@@ -1,10 +1,15 @@
 package project.app.cornershop
 
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Pair
 import android.util.Patterns
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.*
 import com.google.firebase.database.*
 
@@ -17,10 +22,26 @@ class Registration : AppCompatActivity() {
     private lateinit var ConfirmPassword:EditText
     private lateinit var confirmClicked: Button
     private lateinit var dropdownSelect: Spinner
+    private lateinit var layout2: RelativeLayout
+    private lateinit var logoim2: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
+
+        layout2 = findViewById(R.id.relout2)
+        logoim2 = findViewById(R.id.logoim2)
+
+        val anim = AnimationUtils.loadAnimation(this,R.anim.fadein)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            run{
+                layout2.visibility = View.VISIBLE
+                layout2.startAnimation(anim)
+            }
+        }, 300)
+
+
         dropdownSelect = findViewById(R.id.dropdownBox)
         val items = arrayOf("Select Area", "Dhanmondi", "Mohammadpur", "Shyamoli", "Moghbazar","Gulshan")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
@@ -32,17 +53,21 @@ class Registration : AppCompatActivity() {
         Password = findViewById(R.id.SignupPass)
         ConfirmPassword = findViewById(R.id.ConfirmPass)
         confirmClicked = findViewById(R.id.confirmSignup)
-        val signin_click =findViewById<TextView>(R.id.loginnow)
+        val signinClick =findViewById<TextView>(R.id.loginnow)
 
-        signin_click.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this@Registration, MainActivity::class.java)
+        signinClick.setOnClickListener {
+            val intent = Intent(this@Registration, SignIn::class.java)
+            val options = ActivityOptions.makeSceneTransitionAnimation(
+                this@Registration,
+                Pair.create(logoim2, "logo")
+            )
             fullName.text.clear()
             PhonNo.text.clear()
             Password.text.clear()
             ConfirmPassword.text.clear()
             dropdownSelect.setSelection(0)
-            startActivity(intent)
-        })
+            startActivity(intent, options.toBundle())
+        }
 
         confirmClicked.setOnClickListener {
             val uName = fullName.text.toString()
