@@ -3,12 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#D5E1DF"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/img_logo"
-        android:forceHasOverlappingRendering="true"
-        android:focusedByDefault="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
@@ -16,4 +15,5 @@
         android:layout_centerHorizontal="true"
         android:fitsSystemWindows="true"
         android:transitionName="logo"/>
+
 </RelativeLayout>

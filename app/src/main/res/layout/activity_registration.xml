@@ -8,10 +8,9 @@
 
         <ImageView
             android:id="@+id/logoim2"
-            android:layout_width="228dp"
-            android:layout_height="130dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="30dp"
             android:src="@drawable/logo"
             android:transitionName="logo" />
