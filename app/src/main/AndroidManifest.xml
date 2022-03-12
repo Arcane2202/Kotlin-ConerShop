@@ -12,10 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
-            android:name=".SignIn"
+            android:name=".HelpCenter"
             android:exported="false" />
         <activity
-            android:name=".HomePage"
+            android:name=".TermsAndConditions"
+            android:exported="false" />
+        <activity
+            android:name=".Settings"
+            android:exported="false" />
+        <activity
+            android:name=".OrderHistory"
+            android:exported="false"
+            android:label="@string/title_activity_order_history"
+            android:theme="@style/Theme.CornerShop.NoActionBar" />
+        <activity
+            android:name=".Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Home"
+            android:exported="true" />
+        <activity
+            android:name=".Navigation"
+            android:exported="true" />
+        <activity
+            android:name=".SignIn"
             android:exported="false" />
         <activity
             android:name=".Registration"

@@ -4,6 +4,7 @@ import android.app.ActivityOptions
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Handler
 import android.os.Looper
 import android.util.Pair
@@ -22,6 +23,7 @@ class SignIn : AppCompatActivity() {
     private lateinit var logo: TextView
     private lateinit var layout: RelativeLayout
     private lateinit var logoim: View
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,7 @@ class SignIn : AppCompatActivity() {
        }, 300)
 
 
+
         signupClick.setOnClickListener {
             val options = ActivityOptions.makeSceneTransitionAnimation(
                 this@SignIn,
@@ -56,6 +59,8 @@ class SignIn : AppCompatActivity() {
             startActivity(intent, options.toBundle())
         }
 
+        val sharedPreferences:SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
 
         signinClicked = findViewById(R.id.loginButton)
 
@@ -71,7 +76,11 @@ class SignIn : AppCompatActivity() {
                     val corPass = it.child("pass").value
                     if(logPass == corPass) {
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
-                        val intent = Intent(this@SignIn, HomePage::class.java)
+                        editor.apply {
+                            putString("Phone",logPhone)
+                            apply()
+                        }
+                        val intent = Intent(this@SignIn, Home::class.java)
                         intent.putExtra("uNam",it.child("name").value.toString())
                         PhoneNo.text.clear()
                         Pasword.text.clear()

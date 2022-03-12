@@ -1,43 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/relate"
-    android:orientation="vertical"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/teal_700"
+    android:orientation="horizontal"
+    android:background="@color/Background"
     >
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:src="@drawable/sage"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"/>
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nameUser"
-        android:text="Testing Sample"
-        android:textSize="20dp"
-        android:paddingTop="5dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/black"
-        android:text="01723456789"
-        android:textSize="18dp"/>
+        android:layout_height="wrap_content">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="25dp"/>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="18dp"
+                android:textColor="#90A295"
+                android:textStyle="bold"/>
 
 
 
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 </LinearLayout>

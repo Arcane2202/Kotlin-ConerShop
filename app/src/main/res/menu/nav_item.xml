@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="@string/account">
+
+        <menu>
+
+            <item
+                android:id="@+id/home"
+                android:title="@string/home"/>
+            <item
+                android:id="@+id/profile"
+                android:title="@string/profile"/>
+        </menu>
+    </item>
+    <item
+        android:title="@string/others"
+        >
+        <menu>
+
+            <item
+                android:id="@+id/Orders"
+                android:title="@string/order_history"/>
+            <item
+                android:id="@+id/Terms"
+                android:title="@string/terms_and_conditions"/>
+            <item
+                android:id="@+id/helpCenter"
+                android:title="@string/help_center"/>
+            <item
+                android:id="@+id/settings"
+                android:title="@string/settings"/>
+            <item
+                android:id="@+id/logOutNav"
+                android:title="Logout"/>
+
+        </menu>
+
+    </item>
+
+</menu>
