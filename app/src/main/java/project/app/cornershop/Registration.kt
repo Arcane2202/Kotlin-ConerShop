@@ -11,19 +11,27 @@ import android.util.Patterns
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.auth.PhoneAuthProvider.getInstance
 import com.google.firebase.database.*
+import java.util.concurrent.TimeUnit
 
-class Registration : AppCompatActivity() {
+open class Registration : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var fullName: EditText
-    private lateinit var PhonNo:EditText
+    protected lateinit var PhonNo:EditText
     private lateinit var Password:EditText
     private lateinit var ConfirmPassword:EditText
     private lateinit var confirmClicked: Button
     private lateinit var dropdownSelect: Spinner
     private lateinit var layout2: RelativeLayout
     private lateinit var logoim2: View
+    protected lateinit var uPhone:String
+
+    lateinit var auth : FirebaseAuth
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +79,7 @@ class Registration : AppCompatActivity() {
 
         confirmClicked.setOnClickListener {
             val uName = fullName.text.toString()
-            val uPhone = PhonNo.text.toString()
+            uPhone = PhonNo.text.toString()
             val passwrd = Password.text.toString()
             val cpasswrd = ConfirmPassword.text.toString()
             val area = dropdownSelect.selectedItem.toString()
@@ -95,6 +103,7 @@ class Registration : AppCompatActivity() {
                     if(it.exists()) {
                         Toast.makeText(this, "This phone number is already registered!", Toast.LENGTH_LONG).show()
                     } else {
+
                         val users = User(uName, uPhone, area, passwrd)
                         database.child(uPhone).setValue(users).addOnSuccessListener {
                             Toast.makeText(this@Registration, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
