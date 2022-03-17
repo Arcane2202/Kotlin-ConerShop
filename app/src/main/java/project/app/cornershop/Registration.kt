@@ -23,7 +23,7 @@ open class Registration : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var fullName: EditText
-    protected lateinit var PhonNo:EditText
+    private lateinit var PhonNo:EditText
     private lateinit var Password:EditText
     private lateinit var ConfirmPassword:EditText
     private lateinit var confirmClicked: Button
@@ -104,7 +104,7 @@ open class Registration : AppCompatActivity() {
 
                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                             "+88" + uPhone,
-                            10,
+                            60,
                             TimeUnit.SECONDS,
                             this@Registration,
                             object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResetPass">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+    <EditText
+        android:id="@+id/newPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter New Password"
+        android:inputType="textPassword"
+        android:layout_centerHorizontal="true"/>
+
+        <EditText
+            android:id="@+id/newPassConfirm"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/newPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter New Password"
+            android:inputType="textPassword"
+            android:layout_centerHorizontal="true"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:id="@+id/buttonConfirm"
+            android:layout_below="@id/newPassConfirm"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/Background"
+            android:textColor="@color/black"/>
+
+</RelativeLayout>
+
+</RelativeLayout>

@@ -12,12 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".ResetPass"
+            android:exported="false" />
+        <activity
+            android:name=".OTP_Verification_Password"
+            android:exported="false" />
+        <activity
+            android:name=".Forgot_password"
+            android:exported="false" />
+        <activity
             android:name=".OTP_Verification"
-            android:exported="true" >
-
-
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".HelpCenter"
             android:exported="false" />
@@ -55,7 +60,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

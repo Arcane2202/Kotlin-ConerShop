@@ -23,6 +23,7 @@ class SignIn : AppCompatActivity() {
     private lateinit var logo: TextView
     private lateinit var layout: RelativeLayout
     private lateinit var logoim: View
+    private lateinit var forgot : TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,7 @@ class SignIn : AppCompatActivity() {
         logo = findViewById(R.id.login)
         layout = findViewById(R.id.relout)
         logoim = findViewById(R.id.logoim)
+        forgot = findViewById(R.id.forgetButton)
 
         val anim = AnimationUtils.loadAnimation(this,R.anim.fadein)
 
@@ -57,6 +59,13 @@ class SignIn : AppCompatActivity() {
             PhoneNo.text.clear()
             Pasword.text.clear()
             startActivity(intent, options.toBundle())
+        }
+
+        forgot.setOnClickListener{
+            val intent = Intent(this@SignIn, Forgot_password::class.java)
+            PhoneNo.text.clear()
+            Pasword.text.clear()
+            startActivity(intent)
         }
 
         val sharedPreferences:SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
