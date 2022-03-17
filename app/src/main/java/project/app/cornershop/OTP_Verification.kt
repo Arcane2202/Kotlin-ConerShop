@@ -20,12 +20,15 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 class OTP_Verification : AppCompatActivity() {
 
+    private lateinit var database: DatabaseReference
     private lateinit var otpConfirm:Button
     lateinit var inp1:EditText
     lateinit var inp2:EditText
@@ -43,7 +46,6 @@ class OTP_Verification : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp_verification)
-        val phone:String = "01781780172"
 
         otpConfirm = findViewById(R.id.confirmOTP)
         inp1 = findViewById(R.id.otpText1)
@@ -56,6 +58,13 @@ class OTP_Verification : AppCompatActivity() {
 
         codeBySystem = intent.getStringExtra("codeSent")
 
+        val uName = intent.getStringExtra("uName")
+        val uPhone = intent.getStringExtra("uPhone")
+        val area = intent.getStringExtra("area")
+        val passwrd = intent.getStringExtra("passwrd")
+
+        database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
+
         otpConfirm.setOnClickListener {
             val codeByUser:String = inp1.text.toString()+inp2.text.toString()+inp3.text.toString()+inp4.text.toString()+inp5.text.toString()+inp6.text.toString()
             if(codeBySystem!=null) {
@@ -66,6 +75,13 @@ class OTP_Verification : AppCompatActivity() {
                     .addOnCompleteListener(object : OnCompleteListener<AuthResult>{
                         override fun onComplete(task: Task<AuthResult>) {
                             if(task.isSuccessful()) {
+                                Toast.makeText(this@OTP_Verification, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
+                                val users = User(uName, uPhone, area, passwrd)
+                                database.child(uPhone.toString()).setValue(users).addOnSuccessListener {
+                                    Toast.makeText(this@OTP_Verification, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
+                                }.addOnFailureListener {
+                                    Toast.makeText(this@OTP_Verification, "Sign-Up Failed!", Toast.LENGTH_LONG).show()
+                                }
                                 finish()
                             }
                         }

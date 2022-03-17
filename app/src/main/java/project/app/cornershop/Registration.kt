@@ -30,7 +30,6 @@ open class Registration : AppCompatActivity() {
     private lateinit var dropdownSelect: Spinner
     private lateinit var layout2: RelativeLayout
     private lateinit var logoim2: View
-    protected lateinit var uPhone:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +77,7 @@ open class Registration : AppCompatActivity() {
 
         confirmClicked.setOnClickListener {
             val uName = fullName.text.toString()
-            uPhone = PhonNo.text.toString()
+            val uPhone = PhonNo.text.toString()
             val passwrd = Password.text.toString()
             val cpasswrd = ConfirmPassword.text.toString()
             val area = dropdownSelect.selectedItem.toString()
@@ -117,24 +116,16 @@ open class Registration : AppCompatActivity() {
                                 }
                                 override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
                                     val intent = Intent(this@Registration, OTP_Verification::class.java)
-                                    intent.putExtra("uNam",it.child("name").value.toString())
                                     intent.putExtra("codeSent",p0)
+                                    intent.putExtra("uName",uName)
+                                    intent.putExtra("uPhone",uPhone)
+                                    intent.putExtra("area",area)
+                                    intent.putExtra("passwrd",passwrd)
                                     startActivity(intent)
+                                    finish()
                                 }
                             }
                         )
-                        val users = User(uName, uPhone, area, passwrd)
-                        database.child(uPhone).setValue(users).addOnSuccessListener {
-                            Toast.makeText(this@Registration, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
-                            fullName.text.clear()
-                            PhonNo.text.clear()
-                            Password.text.clear()
-                            ConfirmPassword.text.clear()
-                            dropdownSelect.setSelection(0)
-                            finish()
-                        }.addOnFailureListener {
-                            Toast.makeText(this@Registration, "Sign-Up Failed!", Toast.LENGTH_LONG).show()
-                        }
                     }
                 }
             }
