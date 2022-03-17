@@ -11,7 +11,9 @@ import android.util.Patterns
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.getInstance
 import com.google.firebase.database.*
@@ -29,9 +31,6 @@ open class Registration : AppCompatActivity() {
     private lateinit var layout2: RelativeLayout
     private lateinit var logoim2: View
     protected lateinit var uPhone:String
-
-    lateinit var auth : FirebaseAuth
-    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +103,26 @@ open class Registration : AppCompatActivity() {
                         Toast.makeText(this, "This phone number is already registered!", Toast.LENGTH_LONG).show()
                     } else {
 
+                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                            "+88" + uPhone,
+                            60,
+                            TimeUnit.SECONDS,
+                            this@Registration,
+                            object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+                                    TODO("Not yet implemented")
+                                }
+                                override fun onVerificationFailed(p0: FirebaseException) {
+                                    TODO("Not yet implemented")
+                                }
+                                override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                                    val intent = Intent(this@Registration, OTP_Verification::class.java)
+                                    intent.putExtra("uNam",it.child("name").value.toString())
+                                    intent.putExtra("codeSent",p0)
+                                    startActivity(intent)
+                                }
+                            }
+                        )
                         val users = User(uName, uPhone, area, passwrd)
                         database.child(uPhone).setValue(users).addOnSuccessListener {
                             Toast.makeText(this@Registration, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
@@ -118,7 +137,6 @@ open class Registration : AppCompatActivity() {
                         }
                     }
                 }
-
             }
         }
 
