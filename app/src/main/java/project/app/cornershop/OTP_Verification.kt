@@ -1,6 +1,7 @@
 package project.app.cornershop
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.ProxyFileDescriptorCallback
@@ -30,13 +31,8 @@ class OTP_Verification : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private lateinit var otpConfirm:Button
-    lateinit var inp1:EditText
-    lateinit var inp2:EditText
-    lateinit var inp3:EditText
-    lateinit var inp4:EditText
-    lateinit var inp5:EditText
-    lateinit var inp6:EditText
-    lateinit var test:TextView
+    lateinit var inp:EditText
+    lateinit var Resend:TextView
     lateinit var auth: FirebaseAuth
     lateinit var resendToken:PhoneAuthProvider.ForceResendingToken
     lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
@@ -48,13 +44,8 @@ class OTP_Verification : AppCompatActivity() {
         setContentView(R.layout.activity_otp_verification)
 
         otpConfirm = findViewById(R.id.confirmOTP)
-        inp1 = findViewById(R.id.otpText1)
-        inp2 = findViewById(R.id.otpText2)
-        inp3 = findViewById(R.id.otpText3)
-        inp4 = findViewById(R.id.otpText4)
-        inp5 = findViewById(R.id.otpText5)
-        inp6 = findViewById(R.id.otpText6)
-        test = findViewById(R.id.test)
+        inp = findViewById(R.id.otpText1)
+        Resend = findViewById(R.id.RESENDOTP)
 
         codeBySystem = intent.getStringExtra("codeSent")
 
@@ -66,7 +57,7 @@ class OTP_Verification : AppCompatActivity() {
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
 
         otpConfirm.setOnClickListener {
-            val codeByUser:String = inp1.text.toString()+inp2.text.toString()+inp3.text.toString()+inp4.text.toString()+inp5.text.toString()+inp6.text.toString()
+            val codeByUser:String = inp.text.toString()
             if(codeBySystem!=null) {
                 phoneAuthCredential = PhoneAuthProvider.getCredential(
                     codeBySystem!!,codeByUser
@@ -87,6 +78,25 @@ class OTP_Verification : AppCompatActivity() {
                         }
                     })
             }
+        }
+        Resend.setOnClickListener{
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+88" + uPhone,
+                10,
+                TimeUnit.SECONDS,
+                this@OTP_Verification,
+                object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                    override fun onVerificationCompleted(p0: PhoneAuthCredential) {
+                        TODO("Not yet implemented")
+                    }
+                    override fun onVerificationFailed(p0: FirebaseException) {
+                        TODO("Not yet implemented")
+                    }
+                    override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                        Toast.makeText(this@OTP_Verification, "OTP sent!!", Toast.LENGTH_LONG).show()
+                    }
+                }
+            )
         }
     }
 }

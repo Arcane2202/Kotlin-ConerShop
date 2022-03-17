@@ -36,73 +36,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:maxLength="1"
+            android:maxLength="6"
             android:imeOptions="actionNext"
             android:importantForAutofill="no"
-            android:hint="0"
+            android:hint="000000"
             android:textAlignment="center"
             android:textSize="20dp" />
-    <EditText
-        android:id="@+id/otpText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:hint="0"
-        android:layout_toRightOf="@id/otpText1"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:maxLength="1"
-        android:textSize="20dp" />
-    <EditText
-        android:id="@+id/otpText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:hint="0"
-        android:layout_toRightOf="@id/otpText2"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textAlignment="center"
-        android:textSize="20dp" />
-    <EditText
-        android:id="@+id/otpText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/otpText3"
-        android:imeOptions="actionNext"
-        android:hint="0"
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textAlignment="center"
-        android:textSize="20dp" />
-    <EditText
-        android:id="@+id/otpText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/otpText4"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:hint="0"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textAlignment="center"
-        android:textSize="20dp" />
-
-    <EditText
-        android:id="@+id/otpText6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/otpText5"
-        android:hint="0"
-        android:imeOptions="actionNext"
-        android:importantForAutofill="no"
-        android:maxLength="1"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="20dp" />
     </RelativeLayout>
 
     <Button
@@ -119,13 +58,27 @@
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="22dp" />
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/confirmOTP"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/test"
+        android:id="@+id/didntText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/confirmOTP"
-        android:layout_centerHorizontal="true"
         android:textAlignment="center"
-        android:hint="Code Appears Here"/>
+        android:hint="Didn't get the OTP ? "/>
+
+        <TextView
+            android:id="@+id/RESENDOTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/didntText"
+            android:text="RESEND OTP"
+            android:clickable="true"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
 </RelativeLayout>

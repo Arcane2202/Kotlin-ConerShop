@@ -104,7 +104,7 @@ open class Registration : AppCompatActivity() {
 
                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                             "+88" + uPhone,
-                            60,
+                            10,
                             TimeUnit.SECONDS,
                             this@Registration,
                             object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
