@@ -61,12 +61,12 @@ class SignIn : AppCompatActivity() {
             startActivity(intent, options.toBundle())
         }
 
-        forgot.setOnClickListener{
+        /*forgot.setOnClickListener{
             val intent = Intent(this@SignIn, Forgot_password::class.java)
             PhoneNo.text.clear()
             Pasword.text.clear()
             startActivity(intent)
-        }
+        }*/
 
         val sharedPreferences:SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
         val editor = sharedPreferences.edit()

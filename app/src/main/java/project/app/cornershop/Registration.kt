@@ -134,7 +134,10 @@ open class Registration : AppCompatActivity() {
     }
     private fun isPhoneValid(phone:String):Boolean {
         val pat = Patterns.PHONE
-        return pat.matcher(phone).matches()
+        if(pat.matcher(phone).matches()&&phone[0]=='0'&&phone[1]=='1'&&(phone[2]=='3'||phone[2]=='4'||phone[2]=='5'||phone[2]=='6'||phone[2]=='7'||phone[2]=='8'||phone[2]=='9')) {
+            return true
+        }
+        return false
     }
 }
 
