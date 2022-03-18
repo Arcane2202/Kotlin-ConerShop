@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Categories"
         android:textSize="35dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="?actionBarSize"
         android:layout_marginLeft="10dp"
         android:textColor="@color/black"/>
@@ -23,45 +24,91 @@
         android:layout_height="match_parent"
         >
         <RelativeLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardDrugs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="30dp"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
         <TextView
             android:id="@+id/DrugsCat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Drugs"
-            android:layout_marginTop="20dp"
+            android:padding="20dp"
             android:textSize="25dp"
             android:layout_marginBottom="10dp"
             android:textColor="@color/black"
             android:layout_marginLeft="15dp"
             />
+
+        </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardStationary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardDrugs"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
         <TextView
             android:id="@+id/StationaryCat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/DrugsCat"
             android:text="Stationary"
+            android:padding="20dp"
             android:textSize="25dp"
-            android:textColor="@color/black"
             android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
             android:layout_marginLeft="15dp"
             />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardGroceries"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardStationary"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
             <TextView
                 android:id="@+id/GroceriesCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Groceries"
-                android:layout_below="@id/StationaryCat"
+                android:padding="20dp"
                 android:textSize="25dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardElectronics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardGroceries"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
             <TextView
                 android:id="@+id/ElectronicsCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="20dp"
                 android:layout_below="@id/GroceriesCat"
                 android:text="Electronics"
                 android:textSize="25dp"
@@ -69,17 +116,43 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="10dp"
                 />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardClothes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardElectronics"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
+
             <TextView
                 android:id="@+id/ClothesCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Clothes"
+                android:padding="20dp"
                 android:layout_below="@id/ElectronicsCat"
                 android:textSize="25dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCosmetics"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardClothes"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
             <TextView
                 android:id="@+id/CosmeticsCat"
                 android:layout_width="match_parent"
@@ -87,10 +160,24 @@
                 android:layout_below="@id/ClothesCat"
                 android:text="Cosmetics"
                 android:textSize="25dp"
+                android:padding="20dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="10dp"
                 />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardHealth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardCosmetics"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
+
             <TextView
                 android:id="@+id/HEALTHandHYGIENECat"
                 android:layout_width="match_parent"
@@ -98,10 +185,24 @@
                 android:text="@string/health_hygiene"
                 android:layout_below="@id/CosmeticsCat"
                 android:textSize="25dp"
+                android:padding="20dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBevarage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardHealth"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
+
             <TextView
                 android:id="@+id/BevarageCat"
                 android:layout_width="match_parent"
@@ -109,10 +210,22 @@
                 android:layout_below="@id/HEALTHandHYGIENECat"
                 android:text="Bevarage"
                 android:textSize="25dp"
+                android:padding="20dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="10dp"
                 />
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardFood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardBevarage"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
             <TextView
                 android:id="@+id/FOODandSNACKS"
                 android:layout_width="match_parent"
@@ -120,24 +233,41 @@
                 android:text="@string/food_snacks"
                 android:layout_below="@id/BevarageCat"
                 android:textSize="25dp"
+                android:padding="20dp"
                 android:layout_marginBottom="10dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardOthers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="30dp"
+                android:layout_below="@id/cardFood"
+                app:cardBackgroundColor="#D5E1FF"
+                app:cardElevation="30dp"
+                >
+
             <TextView
                 android:id="@+id/otherssCat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/FOODandSNACKS"
                 android:text="Others"
+                android:padding="20dp"
                 android:textSize="25dp"
                 android:textColor="@color/black"
                 android:layout_marginLeft="15dp"
                 android:layout_marginBottom="10dp"
                 />
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
-
     </ScrollView>
+    
     <Button
         android:layout_width="65dp"
         android:layout_height="65dp"
