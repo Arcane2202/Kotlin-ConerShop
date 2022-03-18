@@ -12,20 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
-<<<<<<< Updated upstream
             android:name=".Drugs"
-=======
-            android:name=".buyer_profile"
->>>>>>> Stashed changes
-            android:exported="false" />
-        <activity
-            android:name=".ResetPass"
-            android:exported="false" />
-        <activity
-            android:name=".OTP_Verification_Password"
-            android:exported="false" />
-        <activity
-            android:name=".Forgot_password"
             android:exported="false" />
         <activity
             android:name=".OTP_Verification"
