@@ -11,12 +11,13 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Categories"
-        android:textSize="35dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="?actionBarSize"
         android:layout_marginLeft="10dp"
-        android:textColor="@color/black"/>
+        android:layout_marginTop="?actionBarSize"
+        android:paddingTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Categories"
+        android:textColor="@color/black"
+        android:textSize="35dp" />
     <ScrollView
         android:layout_below="@id/title"
         android:id="@+id/categoryBlock"
@@ -267,15 +268,49 @@
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
-    
-    <Button
-        android:layout_width="65dp"
-        android:layout_height="65dp"
+
+
+
+    <LinearLayout
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/ocr"
-        android:textColor="@color/white"
-        android:layout_marginBottom="20sp"
-        android:background="@drawable/custom_button"/>
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:elevation="16dp">
+
+        <ImageView
+            android:id="@+id/notiClick"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_notification_icon"
+            android:layout_marginRight="100dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/ocrClick"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/ocr"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white"
+            android:background="@drawable/custom_button"/>
+        <ImageView
+            android:id="@+id/cartClick"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="100dp"
+            android:src="@drawable/ic_cart_icon"
+            android:layout_marginTop="10dp"
+            />
+
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>
