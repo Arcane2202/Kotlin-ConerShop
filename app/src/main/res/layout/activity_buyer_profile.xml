@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".buyer_profile">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        />
+
+
+    <TextView
+        android:id="@+id/title_profile"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Profile"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+
+        />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color1"
+        android:layout_below="@id/title_profile"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="15dp"
+        android:paddingleft="15dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center_vertical"
+       />
+
+
+    <ImageView
+        android:id="@+id/person"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_below="@id/title_profile"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ic_baseline_person" />
+
+
+    <TextView
+        android:id="@+id/title_fullname"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:layout_below="@id/title_profile"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:text="Full Name:"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+
+        android:layout_toRightOf="@id/person"
+        />
+
+
+
+
+
+
+    <ImageView
+        android:id="@+id/phone"
+        android:layout_below="@id/person"
+        android:layout_marginLeft="10dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_baseline_phone" />
+
+    <TextView
+        android:id="@+id/title_phone"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:layout_below="@id/title_fullname"
+        android:layout_marginLeft="10dp"
+        android:text="Phone No:"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+
+        android:layout_toRightOf="@id/phone" />
+
+
+
+
+
+    <ImageView
+        android:id="@+id/history"
+        android:layout_below="@id/phone"
+        android:layout_marginLeft="10dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_baseline_history" />
+
+    <TextView
+        android:id="@+id/title_orderHistory"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:layout_below="@id/title_phone"
+        android:layout_marginLeft="10dp"
+        android:text="Order History:"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+
+        android:layout_toRightOf="@id/history" />
+
+
+    <ImageView
+        android:id="@+id/statistics"
+        android:layout_below="@id/history"
+        android:layout_marginLeft="10dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/ic_baseline_stat" />
+
+    <TextView
+        android:id="@+id/title_stat"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:layout_below="@id/history"
+        android:layout_marginLeft="10dp"
+        android:text="Statistics:"
+        android:textColor="@color/black"
+        android:textSize="22dp"
+
+        android:layout_toRightOf="@id/statistics"  />
+
+
+
+
+</RelativeLayout>
+
