@@ -12,7 +12,7 @@ Email: 190204064@aust.edu<br />
 Email: 190204067@aust.edu<br />
 -Tabassum Jahan Lamia<br />
 Email: 190204077@aust.edu<br />
--Symum Hossain<br />
+-Md. Symum Hossain<br />
 Email: 190204105@aust.edu<br /><br />
 
 We all are students of CSE dept. at Ahsanullah University Of Science and Technology(AUST). We made this project for our CSE2200 Software Development Lab.
