@@ -25,11 +25,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textSize="18dp"
+                android:layout_marginTop="40dp"
+                android:textAlignment="center"
+                android:textSize="30dp"
+                android:layout_marginBottom="40dp"
                 android:textColor="#90A295"
                 android:textStyle="bold"/>
-
-
 
         </LinearLayout>
 
