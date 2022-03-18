@@ -31,6 +31,17 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/nav_drawer.xml" value="0.264" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/nav_header.xml" value="0.2" />
         <entry key="..\:/Corner_Shop/app/src/main/res/menu/nav_item.xml" value="0.2087378640776699" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_drugs.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_home.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_items.xml" value="0.2296875" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_otp_verification.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_registration.xml" value="0.2296875" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_settings.xml" value="0.176" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_sign_in.xml" value="0.12360688956433637" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.2296875" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/nav_drawer.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/nav_header.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tanve/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_home_page.xml" value="0.22" />
         <entry key="..\:/Users/tanve/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_main.xml" value="0.3625" />
         <entry key="..\:/Users/tanve/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_registration.xml" value="0.3625" />
@@ -39,7 +50,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

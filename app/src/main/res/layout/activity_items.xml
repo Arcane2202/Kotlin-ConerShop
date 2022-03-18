@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        />
+
+
+    <TextView
+        android:id="@+id/itemList"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/Background"
+        android:gravity="center"
+        android:text="Item List"
+        android:textColor="#90A295"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="15dp"
+        android:paddingleft="15dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center_vertical"
+        />
+
+
+
+
+
+    <TextView
+        android:id="@+id/title_AllItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/itemList"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="00dp"
+        android:text="Items:"
+        android:textColor="#597A68"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_toRightOf="@id/edit"
+        />
+
+    <TextView
+        android:id="@+id/title_Items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/title_AllItems"
+
+        />
+
+    <TextView
+        android:id="@+id/title_payment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/title_Items"
+        android:layout_marginTop="00dp"
+        android:text="Payment Method:"
+        android:textColor="#597A68"
+        android:textSize="22dp"
+        android:textStyle="bold"
+
+
+        />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/title_Items"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_toRightOf="@+id/title_payment"
+        />
+
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="65dp"
+        android:backgroundTint="#597A68"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="20dp"
+        android:text="Confirm"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="5dp"
+        />
+
+
+
+</RelativeLayout>

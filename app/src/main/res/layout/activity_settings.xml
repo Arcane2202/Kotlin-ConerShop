@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
     >
 
     <RelativeLayout
@@ -26,7 +25,6 @@
         android:textColor="#90A295"
         android:textSize="30dp"
         android:textStyle="bold"
-
         />
 
 
@@ -50,7 +48,8 @@
         android:layout_below="@+id/settings"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_baseline_edit2" />
+        android:src="@drawable/ic_baseline_edit2"
+        />
 
 
     <TextView
@@ -80,7 +79,6 @@
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"
         android:layout_toRightOf="@+id/title_changeLan"
-
         />
 
 
