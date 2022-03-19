@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="10dp"
+    android:paddingEnd="10dp"
+    tools:context=".createShop">
+
+    <TextView
+        android:id="@+id/titleShopDet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Shop Details"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="10dp"/>
+    <EditText
+        android:id="@+id/ShopName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleShopDet"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="Shop Name"
+        android:inputType="text" />
+    <Spinner
+        android:id="@+id/ShopCat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/ShopName"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/ShopLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/ShopCat"
+        android:spinnerMode="dropdown" />
+    <EditText
+        android:id="@+id/ShopAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ShopLoc"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="Shop Address"
+        android:inputType="text" />
+
+</RelativeLayout>

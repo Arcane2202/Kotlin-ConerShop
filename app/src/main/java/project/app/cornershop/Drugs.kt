@@ -76,7 +76,6 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         }
         reference.addValueEventListener(FirebaseListener)
         layoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)

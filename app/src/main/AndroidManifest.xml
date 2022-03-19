@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".createShop"
+            android:exported="false" />
+        <activity
             android:name=".Others"
             android:exported="false" />
         <activity
@@ -40,11 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".SellerHome"
-            android:exported="true" >
-
-
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".CreatingBusinessProfile"
             android:exported="false" />
@@ -80,10 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".Home"
-            android:exported="true" >
-
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Navigation"
             android:exported="true" />
@@ -96,7 +92,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
