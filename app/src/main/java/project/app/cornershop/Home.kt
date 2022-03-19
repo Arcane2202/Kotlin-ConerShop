@@ -105,10 +105,6 @@ class Home : Navigation() {
             val intent = Intent(this@Home, Notifications::class.java)
             startActivity(intent)
         }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         drugs.setOnClickListener{
             val intent = Intent(this@Home, Drugs::class.java)
             startActivity(intent)
@@ -149,9 +145,5 @@ class Home : Navigation() {
             val intent = Intent(this@Home, Others::class.java)
             startActivity(intent)
         }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
     }
 }

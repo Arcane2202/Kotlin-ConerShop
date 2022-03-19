@@ -53,12 +53,9 @@ class Profile : Navigation() {
 
         business.setOnClickListener{
             database.child(userPhone).get().addOnSuccessListener {
-                if(it.child("business_ID").value.toString()=="-1"){
-                    val intent = Intent(this@Profile, Others::class.java)
+                    val intent = Intent(this@Profile, CreatingBusinessProfile::class.java)
                     startActivity(intent)
-                }
             }
         }
-
     }
 }
