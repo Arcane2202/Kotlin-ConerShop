@@ -63,7 +63,7 @@ class Beverage : Navigation(),BeverageAdapter.ClickListener{
 
         val FirebaseListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                val child = snapshot.child("4").children
+                val child = snapshot.child("8").children
                 child.forEach{
                     var shops = ShopList(it.child("Image").value.toString(),
                         it.child("Name").value.toString(),
