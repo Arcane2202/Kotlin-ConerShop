@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,8 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
         val v: View = inflater.inflate(R.layout.activity_drugs,null,false)
         drawerLayout.addView(v,0)
 
+        val titleName:TextView = findViewById(R.id.titleNav)
+        titleName.setText("Drug Stores")
 
         cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)

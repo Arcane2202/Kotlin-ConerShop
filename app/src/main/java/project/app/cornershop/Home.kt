@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 
@@ -26,6 +27,7 @@ class Home : Navigation() {
     private lateinit var cartButton:ImageView
     private lateinit var ocrbutton:Button
     private lateinit var notiButton:ImageView
+    private lateinit var titleName:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null)==null) {
@@ -48,6 +50,9 @@ class Home : Navigation() {
         bevarage = findViewById(R.id.cardBevarage)
         food_snacks = findViewById(R.id.cardFood)
         others = findViewById(R.id.cardOthers)
+
+        titleName = findViewById(R.id.titleNav)
+        titleName.setText("Home")
 
         cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)

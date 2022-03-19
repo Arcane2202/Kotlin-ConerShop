@@ -23,9 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             run{
-
                 val sharedPreferences:SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
 
                 if(sharedPreferences.getString("Phone",null)!=null) {
                     val intent = Intent(this@MainActivity, Home::class.java)

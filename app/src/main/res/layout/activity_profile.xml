@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".buyer_profile">
+    tools:context=".Profile">
 
 
 
@@ -14,7 +14,6 @@
         android:paddingLeft="10dp"
         android:gravity="center_vertical"
         />
-
 
 
     <TextView
@@ -45,7 +44,7 @@
 
     <TextView
         android:id="@+id/title_fullname"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:layout_below="@id/title_profile"
@@ -73,7 +72,7 @@
 
     <TextView
         android:id="@+id/title_phone"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:layout_below="@id/title_fullname"
@@ -98,16 +97,17 @@
 
     <TextView
         android:id="@+id/title_orderHistory"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="3dp"
         android:layout_below="@id/title_phone"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@id/history"
+        android:paddingTop="3dp"
         android:text="Order History:"
         android:textColor="@color/black"
-        android:textSize="22dp"
 
-        android:layout_toRightOf="@id/history" />
+        android:textSize="22dp" />
 
 
     <ImageView
@@ -120,7 +120,7 @@
 
     <TextView
         android:id="@+id/title_stat"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="3dp"
         android:layout_below="@id/history"
