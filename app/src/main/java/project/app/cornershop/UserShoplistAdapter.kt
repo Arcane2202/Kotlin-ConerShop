@@ -27,9 +27,9 @@ class UserShoplistAdapter(private var shopList: MutableList<ShopList>, private v
         return shopList.size
     }
     class UserShoplistViewHolder(view: View): RecyclerView.ViewHolder(view){
-        var shopImage: ImageView = view.findViewById(R.id.sage)
-        var shopName: TextView = view.findViewById(R.id.titleProd)
-        var shopAddress: TextView = view.findViewById(R.id.descripProd)
+        var shopImage: ImageView = view.findViewById(R.id.sageus)
+        var shopName: TextView = view.findViewById(R.id.titleProdus)
+        var shopAddress: TextView = view.findViewById(R.id.descripProdus)
     }
     interface ClickListener {
         fun clickedItem(position: Int)
