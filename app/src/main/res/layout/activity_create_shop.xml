@@ -66,36 +66,6 @@
         android:textSize="22dp"
         android:layout_marginTop="60dp"
         android:textStyle="bold" />
-    <TextView
-        android:id="@+id/tst1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/confirmShop"
-        android:text="Enter Shop Details"
-        android:textSize="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="15dp"/>
-    <TextView
-        android:id="@+id/tst2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tst1"
-        android:text="Enter Shop Details"
-        android:textSize="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="15dp"/>
-    <TextView
-        android:id="@+id/tst3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tst2"
-        android:text="Enter Shop Details"
-        android:textSize="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="15dp"/>
 
 
 </RelativeLayout>

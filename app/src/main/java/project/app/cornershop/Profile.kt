@@ -65,7 +65,7 @@ class Profile : Navigation() {
 
         business.setOnClickListener{
             database.child(userPhone).get().addOnSuccessListener {
-                    val intent = Intent(this@Profile, CreatingBusinessProfile::class.java)
+                    val intent = Intent(this@Profile, createShop :: class.java)
                     startActivity(intent)
             }
         }

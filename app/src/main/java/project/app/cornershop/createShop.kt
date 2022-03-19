@@ -73,6 +73,40 @@ class createShop : AppCompatActivity() {
         val shopName:EditText = findViewById(R.id.ShopName)
         val shopAddress:EditText = findViewById(R.id.ShopAddress)
 
+        reference = database.getReference("ShopVal")
+        val FirebaseListenerS = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val child = snapshot.children
+                child.forEach{
+                    shopIdCurr = (it.value.toString().toInt() + 1).toString()
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        }
+        reference.addValueEventListener(FirebaseListenerS)
+        //reference.child("CurrVal").setValue(shopIdCurr)
+
+        var tempBusId = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Business_Id",null).toString()
+        if(tempBusId!="-1") {
+            businessCurr = tempBusId
+        } else {
+            reference = database.getReference("BusVal")
+            val FirebaseListenerB = object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val child = snapshot.children
+                    child.forEach{
+                        businessCurr = (it.value.toString().toInt() + 1).toString()
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            }
+            reference.addValueEventListener(FirebaseListenerB)
+            //reference.child("CurentVal").setValue(businessCurr)
+        }
 
         confirmShop = findViewById(R.id.confirmShop)
         confirmShop.setOnClickListener{
@@ -82,41 +116,10 @@ class createShop : AppCompatActivity() {
             val catString: String = category.selectedItemPosition.toString()
             val imgString = "https://firebasestorage.googleapis.com/v0/b/cornershopmanagement.appspot.com/o/1200px-Shop.svg.png?alt=media&token=6396b1bc-2b8c-40d2-acdf-82378eec4f62"
 
-            reference = database.getReference("ShopVal")
-            val FirebaseListenerS = object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val child = snapshot.children
-                    child.forEach{
-                        shopIdCurr = (it.value.toString().toInt() + 1).toString()
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {
-
-                }
+            if(tempBusId!=businessCurr) {
+                database.getReference("BusVal").child("CurentVal").setValue(businessCurr)
             }
-            reference.addValueEventListener(FirebaseListenerS)
-            //reference.child("CurrVal").setValue(shopIdCurr)
-
-            var tempBusId = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Business_Id",null).toString()
-            if(tempBusId!="-1") {
-                businessCurr = tempBusId
-            } else {
-                reference = database.getReference("BusVal")
-                val FirebaseListenerB = object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val child = snapshot.children
-                        child.forEach{
-                            businessCurr = (it.value.toString().toInt() + 1).toString()
-                        }
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-
-                    }
-                }
-                reference.addValueEventListener(FirebaseListenerB)
-               // reference.child("CurentVal").setValue(businessCurr)
-            }
-
+            database.getReference("ShopVal").child("CurrVal").setValue(shopIdCurr)
             reference = database.getReference("Shops")
             val info = shopDetails(adrsString,catString,imgString,locString,nameString,businessCurr,shopIdCurr)
             reference.child(catString).child(shopIdCurr).setValue(info)
