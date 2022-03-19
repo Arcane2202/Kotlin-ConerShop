@@ -65,9 +65,9 @@ class Groceries : Navigation(),GroceriesAdapter.ClickListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val child = snapshot.child("3").children
                 child.forEach{
-                    var shops = ShopList(it.child("Image").value.toString(),
-                        it.child("Name").value.toString(),
-                        it.child("Address").value.toString())
+                    var shops = ShopList(it.child("image").value.toString(),
+                        it.child("name").value.toString(),
+                        it.child("address").value.toString())
                     shoplist.add(shops)
                 }
                 adapter = GroceriesAdapter(shoplist,this@Groceries)
