@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class StationaryAdapter(private var shopList: MutableList<ShopList>, private var clickListener: ClickListener):RecyclerView.Adapter<StationaryAdapter.StationaryViewHolder>(){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationaryViewHolder {
-        val layout: View = LayoutInflater.from(parent.context).inflate(R.layout.stationary_card_view,parent,false)
-        return StationaryViewHolder(layout)
+class CosmeticsAdapter(private var shopList: MutableList<ShopList>, private var clickListener: ClickListener):RecyclerView.Adapter<CosmeticsAdapter.CosmeticsViewHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CosmeticsViewHolder {
+        val layout: View = LayoutInflater.from(parent.context).inflate(R.layout.cosmetics_card_view,parent,false)
+        return CosmeticsViewHolder(layout)
     }
 
-    override fun onBindViewHolder(holder: StationaryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CosmeticsViewHolder, position: Int) {
         holder.shopName.text = shopList[position].name
         holder.shopAddress.text = shopList[position].address
         Picasso.get().load(shopList[position].img).into(holder.shopImage)
@@ -26,7 +26,7 @@ class StationaryAdapter(private var shopList: MutableList<ShopList>, private var
     override fun getItemCount(): Int {
         return shopList.size
     }
-    class StationaryViewHolder(view: View): RecyclerView.ViewHolder(view){
+    class CosmeticsViewHolder(view: View): RecyclerView.ViewHolder(view){
         var shopImage: ImageView = view.findViewById(R.id.sage)
         var shopName: TextView = view.findViewById(R.id.titleProd)
         var shopAddress: TextView = view.findViewById(R.id.descripProd)

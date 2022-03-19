@@ -16,10 +16,10 @@ import com.google.firebase.ktx.Firebase
 import java.text.FieldPosition
 import java.util.ArrayList
 
-class Stationary : Navigation(),StationaryAdapter.ClickListener {
+class Cosmetics : Navigation(),CosmeticsAdapter.ClickListener{
 
     private var layoutManager : RecyclerView.LayoutManager?=null
-    private var adapter : RecyclerView.Adapter<StationaryAdapter.StationaryViewHolder>?=null
+    private var adapter : RecyclerView.Adapter<CosmeticsAdapter.CosmeticsViewHolder>?=null
 
     var shoplist = ArrayList<ShopList>()
 
@@ -34,26 +34,26 @@ class Stationary : Navigation(),StationaryAdapter.ClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val inflater: LayoutInflater = LayoutInflater.from(this)
-        val v: View = inflater.inflate(R.layout.activity_stationary,null,false)
+        val v: View = inflater.inflate(R.layout.activity_cosmetics,null,false)
         drawerLayout.addView(v,0)
 
         val titleName:TextView = findViewById(R.id.titleNav)
-        titleName.setText("Stationary Stores")
+        titleName.setText("Cosmetics Stores")
 
         cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)
         notiButton = findViewById(R.id.notiClick)
 
         cartButton.setOnClickListener{
-            val intent = Intent(this@Stationary, Items::class.java)
+            val intent = Intent(this@Cosmetics, Items::class.java)
             startActivity(intent)
         }
         ocrbutton.setOnClickListener{
-            val intent = Intent(this@Stationary, Items::class.java)
+            val intent = Intent(this@Cosmetics, Items::class.java)
             startActivity(intent)
         }
         notiButton.setOnClickListener{
-            val intent = Intent(this@Stationary, Notifications::class.java)
+            val intent = Intent(this@Cosmetics, Notifications::class.java)
             startActivity(intent)
         }
 
@@ -63,14 +63,14 @@ class Stationary : Navigation(),StationaryAdapter.ClickListener {
 
         val FirebaseListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                val child = snapshot.child("2").children
+                val child = snapshot.child("4").children
                 child.forEach{
                     var shops = ShopList(it.child("Image").value.toString(),
                         it.child("Name").value.toString(),
                         it.child("Address").value.toString())
                     shoplist.add(shops)
                 }
-                adapter = StationaryAdapter(shoplist,this@Stationary)
+                adapter = CosmeticsAdapter(shoplist,this@Cosmetics)
                 recyclerView.adapter = adapter
             }
             override fun onCancelled(error: DatabaseError) {
@@ -87,7 +87,7 @@ class Stationary : Navigation(),StationaryAdapter.ClickListener {
 
 
     override fun clickedItem(position: Int) {
-        startActivity(Intent(this@Stationary, ShopProducts::class.java))
+        startActivity(Intent(this@Cosmetics, ShopProducts::class.java))
     }
 }
 

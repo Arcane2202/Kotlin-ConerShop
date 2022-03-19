@@ -12,6 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".Others"
+            android:exported="false" />
+        <activity
+            android:name=".Food"
+            android:exported="false" />
+        <activity
+            android:name=".Beverage"
+            android:exported="false" />
+        <activity
+            android:name=".HealthandHygiene"
+            android:exported="false" />
+        <activity
+            android:name=".Cosmetics"
+            android:exported="false" />
+        <activity
+            android:name=".Clothes"
+            android:exported="false" />
+        <activity
+            android:name=".Electronics"
+            android:exported="false" />
+        <activity
+            android:name=".Groceries"
+            android:exported="false" />
+        <activity
             android:name=".Stationary"
             android:exported="false" />
         <activity

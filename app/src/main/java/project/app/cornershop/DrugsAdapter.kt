@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 
+
 class DrugsAdapter(private var shopList: MutableList<ShopList>, private var clickListener: ClickListener):RecyclerView.Adapter<DrugsAdapter.DrugViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DrugViewHolder {

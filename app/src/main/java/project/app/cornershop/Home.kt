@@ -15,13 +15,13 @@ class Home : Navigation() {
 
     private lateinit var drugs : CardView
     private lateinit var stationary : CardView
-    private lateinit var Groceries : CardView
-    private lateinit var Electronics : CardView
-    private lateinit var Clothes : CardView
-    private lateinit var Cosmetics : CardView
-    private lateinit var Health_Hygiene : CardView
-    private lateinit var bevarage : CardView
-    private lateinit var food_snacks : CardView
+    private lateinit var groceries : CardView
+    private lateinit var electronics : CardView
+    private lateinit var clothes : CardView
+    private lateinit var cosmetics : CardView
+    private lateinit var health_hygiene : CardView
+    private lateinit var beverage : CardView
+    private lateinit var food : CardView
     private lateinit var others : CardView
 
     private lateinit var toggleButton : Button
@@ -59,13 +59,13 @@ class Home : Navigation() {
 
         drugs = findViewById(R.id.cardDrugs)
         stationary = findViewById(R.id.cardStationary)
-        Groceries = findViewById(R.id.cardGroceries)
-        Electronics = findViewById(R.id.cardElectronics)
-        Clothes = findViewById(R.id.cardClothes)
-        Cosmetics = findViewById(R.id.cardCosmetics)
-        Health_Hygiene = findViewById(R.id.cardHealth)
-        bevarage = findViewById(R.id.cardBevarage)
-        food_snacks = findViewById(R.id.cardFood)
+        groceries = findViewById(R.id.cardGroceries)
+        electronics = findViewById(R.id.cardElectronics)
+        clothes = findViewById(R.id.cardClothes)
+        cosmetics = findViewById(R.id.cardCosmetics)
+        health_hygiene = findViewById(R.id.cardHealth)
+        beverage = findViewById(R.id.cardBevarage)
+        food = findViewById(R.id.cardFood)
         others = findViewById(R.id.cardOthers)
 
         titleName = findViewById(R.id.titleNav)
@@ -105,5 +105,49 @@ class Home : Navigation() {
             val intent = Intent(this@Home, Notifications::class.java)
             startActivity(intent)
         }
+<<<<<<< Updated upstream
+=======
+
+        drugs.setOnClickListener{
+            val intent = Intent(this@Home, Drugs::class.java)
+            startActivity(intent)
+        }
+        stationary.setOnClickListener{
+            val intent = Intent(this@Home, Stationary::class.java)
+            startActivity(intent)
+        }
+        groceries.setOnClickListener{
+            val intent = Intent(this@Home, Groceries::class.java)
+            startActivity(intent)
+        }
+        electronics.setOnClickListener{
+            val intent = Intent(this@Home, Electronics::class.java)
+            startActivity(intent)
+        }
+        clothes.setOnClickListener{
+            val intent = Intent(this@Home, Clothes::class.java)
+            startActivity(intent)
+        }
+        cosmetics.setOnClickListener {
+            val intent = Intent(this@Home, Cosmetics::class.java)
+            startActivity(intent)
+        }
+        health_hygiene.setOnClickListener {
+            val intent = Intent(this@Home, HealthandHygiene::class.java)
+            startActivity(intent)
+        }
+        beverage.setOnClickListener {
+            val intent = Intent(this@Home, Beverage::class.java)
+            startActivity(intent)
+        }
+        food.setOnClickListener {
+            val intent = Intent(this@Home, Food::class.java)
+            startActivity(intent)
+        }
+        others.setOnClickListener {
+            val intent = Intent(this@Home, Others::class.java)
+            startActivity(intent)
+        }
+>>>>>>> Stashed changes
     }
 }
