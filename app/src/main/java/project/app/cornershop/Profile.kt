@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.database.DatabaseReference
@@ -24,6 +25,15 @@ class Profile : Navigation() {
             startActivity(intent)
         }
 
+        val name:TextView = findViewById(R.id.title_fullname)
+        val phoneNo:TextView = findViewById(R.id.title_phone)
+        val location : TextView = findViewById(R.id.locate)
+        val editBut : Button = findViewById(R.id.editButton)
+        val name:TextView = findViewById(R.id.title_fullname)
+        val phoneNo:TextView = findViewById(R.id.title_phone)
+        val location : TextView = findViewById(R.id.locate)
+
+
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
         val user = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null)
         super.onCreate(savedInstanceState)
@@ -32,5 +42,6 @@ class Profile : Navigation() {
         drawerLayout.addView(v,0)
         titleName = findViewById(R.id.titleNav)
         titleName.setText("Profile")
+
     }
 }
