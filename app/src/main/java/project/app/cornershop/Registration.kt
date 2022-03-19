@@ -17,11 +17,13 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider.getInstance
 import com.google.firebase.database.*
+import java.util.ArrayList
 import java.util.concurrent.TimeUnit
 
 open class Registration : AppCompatActivity() {
 
-    private lateinit var database: DatabaseReference
+    private lateinit var database:FirebaseDatabase
+    private lateinit var reference: DatabaseReference
     private lateinit var fullName: EditText
     private lateinit var PhonNo:EditText
     private lateinit var Password:EditText
@@ -30,6 +32,8 @@ open class Registration : AppCompatActivity() {
     private lateinit var dropdownSelect: Spinner
     private lateinit var layout2: RelativeLayout
     private lateinit var logoim2: View
+
+    private var locationlist = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +51,24 @@ open class Registration : AppCompatActivity() {
             }
         }, 300)
 
-
         dropdownSelect = findViewById(R.id.dropdownBox)
-        val items = arrayOf("Select Area", "Dhanmondi", "Mohammadpur", "Shyamoli", "Moghbazar","Gulshan")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
-        dropdownSelect.adapter = adapter
+        database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
+        reference = database.getReference("Locations")
+        locationlist.add("Select Area")
+        val FirebaseListenerLoc = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val child = snapshot.children
+                child.forEach{
+                    locationlist.add(it.value.toString())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        }
+        reference.addValueEventListener(FirebaseListenerLoc)
+        val adapterloc = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, locationlist)
+        dropdownSelect.adapter = adapterloc
         dropdownSelect.setSelection(0)
 
         fullName = findViewById(R.id.fullname)
@@ -96,8 +113,8 @@ open class Registration : AppCompatActivity() {
                 Toast.makeText(this, "Password must at least be 6 characters long.", Toast.LENGTH_LONG).show()
             } else {
 
-                database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
-                database.child(uPhone).get().addOnSuccessListener {
+                reference = database.getReference("Users")
+                reference.child(uPhone).get().addOnSuccessListener {
                     if(it.exists()) {
                         Toast.makeText(this, "This phone number is already registered!", Toast.LENGTH_LONG).show()
                     } else {
