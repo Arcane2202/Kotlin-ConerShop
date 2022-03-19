@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".Stationary"
+            android:exported="false" />
+        <activity
+            android:name=".SellerHome"
+            android:exported="false" />
+        <activity
             android:name=".CreatingBusinessProfile"
             android:exported="false" />
         <activity
@@ -54,10 +60,10 @@
             android:exported="true" />
         <activity
             android:name=".SignIn"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Registration"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

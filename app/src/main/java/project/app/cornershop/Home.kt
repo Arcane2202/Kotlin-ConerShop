@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 
 class Home : Navigation() {
@@ -24,6 +22,8 @@ class Home : Navigation() {
     private lateinit var food_snacks : CardView
     private lateinit var others : CardView
 
+    private lateinit var toggleButton : SwitchCompat
+
     private lateinit var cartButton:ImageView
     private lateinit var ocrbutton:Button
     private lateinit var notiButton:ImageView
@@ -38,7 +38,7 @@ class Home : Navigation() {
         super.onCreate(savedInstanceState)
         val inflater:LayoutInflater = LayoutInflater.from(this)
         val v:View = inflater.inflate(R.layout.activity_home,null,false)
-        drawerLayout.addView(v,0)
+        drawerLayout.addView(v,1)
 
         drugs = findViewById(R.id.cardDrugs)
         stationary = findViewById(R.id.cardStationary)
@@ -75,5 +75,11 @@ class Home : Navigation() {
             val intent = Intent(this@Home, Drugs::class.java)
             startActivity(intent)
         }
+
+        toggleButton.setOnClickListener{
+            val intent = Intent(this@Home, Drugs::class.java)
+            startActivity(intent)
+        }
+
     }
 }
