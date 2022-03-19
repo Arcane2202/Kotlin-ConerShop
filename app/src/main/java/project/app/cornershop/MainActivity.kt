@@ -29,11 +29,13 @@ class MainActivity : AppCompatActivity() {
 
                 if(sharedPreferences.getString("Phone",null)!=null) {
                     val intent = Intent(this@MainActivity, Home::class.java)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent)
                 }
                 else {
                     val options = ActivityOptions.makeSceneTransitionAnimation(this@MainActivity, Pair.create(img_logo,"logo"))
                     val intent = Intent(this@MainActivity, SignIn::class.java)
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                     startActivity(intent, options.toBundle())
                 }
             }

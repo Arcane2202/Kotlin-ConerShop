@@ -93,6 +93,7 @@ class SignIn : AppCompatActivity() {
                         intent.putExtra("uNam",it.child("name").value.toString())
                         PhoneNo.text.clear()
                         Pasword.text.clear()
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(intent)
                     } else {
                         Toast.makeText(this@SignIn, "Incorrect Credentials", Toast.LENGTH_LONG).show()
