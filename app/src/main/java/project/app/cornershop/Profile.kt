@@ -25,23 +25,40 @@ class Profile : Navigation() {
             startActivity(intent)
         }
 
-        val name:TextView = findViewById(R.id.title_fullname)
-        val phoneNo:TextView = findViewById(R.id.title_phone)
-        val location : TextView = findViewById(R.id.locate)
-        val editBut : Button = findViewById(R.id.editButton)
-        val name:TextView = findViewById(R.id.title_fullname)
-        val phoneNo:TextView = findViewById(R.id.title_phone)
-        val location : TextView = findViewById(R.id.locate)
-
-
-        database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
-        val user = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null)
         super.onCreate(savedInstanceState)
         val inflater: LayoutInflater = LayoutInflater.from(this)
         val v: View = inflater.inflate(R.layout.activity_profile,null,false)
         drawerLayout.addView(v,0)
+
         titleName = findViewById(R.id.titleNav)
         titleName.setText("Profile")
+
+        val name:TextView = findViewById(R.id.title_fullname)
+        val phoneNo:TextView = findViewById(R.id.title_phone)
+        val location : TextView = findViewById(R.id.locate)
+        val editBut : Button = findViewById(R.id.editButton)
+        val history:TextView = findViewById(R.id.title_orderHistory)
+        val business : TextView = findViewById(R.id.title_Business)
+
+
+
+        database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
+        val userPhone = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
+
+        database.child(userPhone).get().addOnSuccessListener {
+            name.setText(name.text.toString()+it.child("name").value.toString())
+            phoneNo.setText(phoneNo.text.toString()+it.child("phone").value.toString())
+            location.setText(location.text.toString()+it.child("loc").value.toString())
+        }
+
+        business.setOnClickListener{
+            database.child(userPhone).get().addOnSuccessListener {
+                if(it.child("business_ID").value.toString()=="-1"){
+                    val intent = Intent(this@Profile, Others::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
 
     }
 }

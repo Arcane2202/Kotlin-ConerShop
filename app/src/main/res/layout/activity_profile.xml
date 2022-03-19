@@ -49,7 +49,7 @@
         android:layout_marginBottom="10dp"
         android:layout_toRightOf="@id/person"
         android:paddingTop="3dp"
-        android:text="Full Name:"
+        android:text="Full Name: "
         android:textColor="@color/black"
 
         android:textSize="22dp" />
@@ -68,15 +68,15 @@
         android:id="@+id/title_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:layout_marginBottom="10dp"
         android:layout_below="@id/title_fullname"
         android:layout_marginLeft="10dp"
-        android:text="Phone No:"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@id/phone"
+        android:paddingTop="3dp"
+        android:text="Phone No: "
         android:textColor="@color/black"
-        android:textSize="22dp"
 
-        android:layout_toRightOf="@id/phone" />
+        android:textSize="22dp" />
 
     <ImageView
         android:id="@+id/loc"
@@ -93,7 +93,7 @@
         android:paddingTop="3dp"
         android:layout_below="@id/title_phone"
         android:layout_marginLeft="10dp"
-        android:text="Location:"
+        android:text="Location: "
         android:textColor="@color/black"
         android:textSize="22dp"
         android:layout_toRightOf="@id/phone" />
@@ -113,7 +113,7 @@
 
     <LinearLayout
         android:id="@+id/history"
-        android:layout_above="@id/stats"
+        android:layout_above="@id/manageBusiness"
         android:layout_centerHorizontal="true"
         android:background="@color/Background"
         android:layout_marginBottom="20dp"
@@ -131,7 +131,6 @@
         android:layout_below="@id/editButton"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="3dp"
-        android:layout_toRightOf="@id/history"
         android:paddingTop="3dp"
         android:text="Order History"
         android:textColor="@color/black"
@@ -139,36 +138,7 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:id="@+id/stats"
-        android:layout_centerHorizontal="true"
-        android:background="@color/Background"
-        android:layout_above="@id/manageBusiness"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        >
-    <ImageView
-        android:id="@+id/statistics"
-        android:layout_marginLeft="10dp"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/ic_baseline_stat" />
 
-    <TextView
-        android:id="@+id/title_stat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="3dp"
-        android:layout_below="@id/history"
-        android:layout_marginLeft="10dp"
-        android:text="Statistics"
-        android:textColor="@color/black"
-        android:layout_marginStart="35dp"
-        android:textSize="22dp"
-        android:layout_toRightOf="@id/statistics"  />
-
-</LinearLayout>
 
     <LinearLayout
         android:id="@+id/manageBusiness"
@@ -196,7 +166,7 @@
             android:text="Manage Business"
             android:textColor="@color/black"
             android:textSize="22dp"
-            android:layout_toRightOf="@id/statistics"  />
+            android:layout_toRightOf="@id/business"  />
 
     </LinearLayout>
 

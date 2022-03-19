@@ -2,18 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="?actionBarSize"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreatingBusinessProfile">
 
+
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="60dp"
+        >
+
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/usershoplistres"/>
-        
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/activity_bottom_bar"/>
+
 </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ImageView
+android:id="@+id/addShopButton"
+android:layout_below="@id/scrollv"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_alignParentEnd="true"
+android:layout_marginEnd="20dp"
+android:src="@drawable/ic_baseline_add_"/>
