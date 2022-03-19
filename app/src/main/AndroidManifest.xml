@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".Notifications"
+            android:exported="false" />
+        <activity
+            android:name=".BottomBar"
+            android:exported="false" />
+        <activity
+            android:name=".ShopProducts"
+            android:exported="false" />
+        <activity
             android:name=".Items"
             android:exported="false" />
         <activity

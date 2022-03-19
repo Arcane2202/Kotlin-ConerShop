@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 
@@ -21,7 +23,9 @@ class Home : Navigation() {
     private lateinit var food_snacks : CardView
     private lateinit var others : CardView
 
-
+    private lateinit var cartButton:ImageView
+    private lateinit var ocrbutton:Button
+    private lateinit var notiButton:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null)==null) {
@@ -44,6 +48,23 @@ class Home : Navigation() {
         bevarage = findViewById(R.id.cardBevarage)
         food_snacks = findViewById(R.id.cardFood)
         others = findViewById(R.id.cardOthers)
+
+        cartButton = findViewById(R.id.cartClick)
+        ocrbutton = findViewById(R.id.ocrClick)
+        notiButton = findViewById(R.id.notiClick)
+
+        cartButton.setOnClickListener{
+            val intent = Intent(this@Home, Items::class.java)
+            startActivity(intent)
+        }
+        ocrbutton.setOnClickListener{
+            val intent = Intent(this@Home, Items::class.java)
+            startActivity(intent)
+        }
+        notiButton.setOnClickListener{
+            val intent = Intent(this@Home, Notifications::class.java)
+            startActivity(intent)
+        }
 
         drugs.setOnClickListener{
             val intent = Intent(this@Home, Drugs::class.java)
