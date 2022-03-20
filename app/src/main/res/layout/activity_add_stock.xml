@@ -35,7 +35,7 @@
         android:layout_marginBottom="10dp"
         android:ems="50"
         android:hint="Price"
-        android:inputType="text" />
+        android:inputType="number" />
     <EditText
         android:id="@+id/ItemUnit"
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
         android:layout_marginBottom="10dp"
         android:ems="50"
         android:hint="In Stock"
-        android:inputType="text" />
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/ItemDes"
