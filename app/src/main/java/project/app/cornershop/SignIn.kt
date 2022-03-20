@@ -38,7 +38,7 @@ class SignIn : AppCompatActivity() {
         logo = findViewById(R.id.login)
         layout = findViewById(R.id.relout)
         logoim = findViewById(R.id.logoim)
-        forgot = findViewById(R.id.forgetButton)
+      //  forgot = findViewById(R.id.forgetButton)
 
         val anim = AnimationUtils.loadAnimation(this,R.anim.fadein)
 
@@ -48,8 +48,6 @@ class SignIn : AppCompatActivity() {
                 layout.startAnimation(anim)
             }
        }, 300)
-
-
 
         signupClick.setOnClickListener {
             val options = ActivityOptions.makeSceneTransitionAnimation(

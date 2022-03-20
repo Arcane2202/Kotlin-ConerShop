@@ -49,22 +49,22 @@ class SellerHome : Navigation() {
     }
     fun bottomClickListeners() {
 
-        cartButton = findViewById(R.id.cartClick)
+        //cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)
-        notiButton = findViewById(R.id.notiClick)
+        //notiButton = findViewById(R.id.notiClick)
 
-        cartButton.setOnClickListener{
+        /*cartButton.setOnClickListener{
             val intent = Intent(this@SellerHome, Items::class.java)
             startActivity(intent)
-        }
+        }*/
         ocrbutton.setOnClickListener{
             val intent = Intent(this@SellerHome, Items::class.java)
             startActivity(intent)
         }
-        notiButton.setOnClickListener{
+       /* notiButton.setOnClickListener{
             val intent = Intent(this@SellerHome, Notifications::class.java)
             startActivity(intent)
-        }
+        }*/
 
         stock.setOnClickListener{
             val intent = Intent(this@SellerHome, StockList::class.java)

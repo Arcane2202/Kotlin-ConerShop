@@ -138,6 +138,6 @@
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <include layout="@layout/activity_bottom_bar"/>
+    <include layout="@layout/activity_bottom_bar_edit"/>
 
 </RelativeLayout>
