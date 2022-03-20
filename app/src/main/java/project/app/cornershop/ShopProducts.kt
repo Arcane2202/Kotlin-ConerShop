@@ -68,7 +68,8 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
                             it.child("unit").value.toString(),
                             it.child("des").value.toString(),
                             it.child("image").value.toString(),
-                            it.child("item_id").value.toString()
+                            it.child("item_id").value.toString(),
+                            it.child("stock").value.toString()
                             )
                         itemlist.add(items)
                 }
