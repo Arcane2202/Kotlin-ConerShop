@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlin.math.log
 
 class SignIn : AppCompatActivity() {
 
@@ -87,6 +88,7 @@ class SignIn : AppCompatActivity() {
                         Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show()
                         editor.apply {
                             putString("Phone",logPhone)
+                            putString("Pass", logPass)
                             apply()
                         }
                         val intent = Intent(this@SignIn, Home::class.java)

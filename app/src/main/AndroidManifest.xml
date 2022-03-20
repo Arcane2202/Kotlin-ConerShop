@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".ProfileEditing"
+            android:exported="false" />
+        <activity
             android:name=".ManageBusiness"
             android:exported="false" />
         <activity

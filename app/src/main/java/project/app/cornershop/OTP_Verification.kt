@@ -66,7 +66,7 @@ class OTP_Verification : AppCompatActivity() {
                     .addOnCompleteListener(object : OnCompleteListener<AuthResult>{
                         override fun onComplete(task: Task<AuthResult>) {
                             if(task.isSuccessful()) {
-                                Toast.makeText(this@OTP_Verification, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
+                                Toast.makeText(this@OTP_Verification, "OTP Verified!", Toast.LENGTH_SHORT).show()
                                 val users = User(uName, uPhone, area, passwrd,"-1")
                                 database.child(uPhone.toString()).setValue(users).addOnSuccessListener {
                                     Toast.makeText(this@OTP_Verification, "Successfully Signed Up!", Toast.LENGTH_LONG).show()

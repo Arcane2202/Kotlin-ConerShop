@@ -45,7 +45,11 @@ class Profile : Navigation() {
         val history:TextView = findViewById(R.id.title_orderHistory)
         val business : LinearLayout = findViewById(R.id.manageBusiness)
 
-
+        val editButton:Button = findViewById(R.id.editButton)
+        editBut.setOnClickListener{
+            val intent = Intent(this@Profile, ProfileEditing :: class.java)
+            startActivity(intent)
+        }
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
         val userPhone = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
