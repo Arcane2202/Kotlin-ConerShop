@@ -37,7 +37,7 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
         val addStockButton : ImageView = findViewById(R.id.addStockButton)
 
         addStockButton.setOnClickListener {
-            startActivity(Intent(this@StockList, ShopProducts::class.java))
+            startActivity(Intent(this@StockList, AddStock::class.java))
         }
 
         ocrClick.setOnClickListener{

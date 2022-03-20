@@ -65,7 +65,7 @@
         android:hint="Description"
         android:inputType="text" />
     <Button
-        android:id="@+id/confirmShop"
+        android:id="@+id/confirmStock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ItemDes"
