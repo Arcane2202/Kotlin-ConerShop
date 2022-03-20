@@ -56,7 +56,7 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
                 itemlist.clear()
                 val child = snapshot.child(shopClick).children
                 child.forEach{
-                    if(it.child("stock").value.toString()!="0") {
+
                         var items = ItemList(it.child("item").value.toString(),
                             it.child("price").value.toString(),
                             it.child("unit").value.toString(),
@@ -66,7 +66,7 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
                             it.child("stock").value.toString()
                         )
                         itemlist.add(items)
-                    }
+
                 }
                 adapter = StockListAdapter(itemlist,this@StockList)
                 recyclerView.adapter = adapter
@@ -91,7 +91,7 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
             putString("item_id",itemlist[position].item_id)
             apply()
         }
-        startActivity(Intent(this@StockList, Home::class.java))
+        startActivity(Intent(this@StockList, StockEdit::class.java))
         
     }
 }
