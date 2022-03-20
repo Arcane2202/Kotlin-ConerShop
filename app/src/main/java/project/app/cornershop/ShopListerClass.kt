@@ -1,6 +1,7 @@
 package project.app.cornershop
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,9 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
     private lateinit var cartButton: ImageView
     private lateinit var ocrbutton: Button
     private lateinit var notiButton: ImageView
+
+    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,10 +93,17 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
 
+        sharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
     }
 
 
     override fun clickedItem(position: Int) {
+        editor.apply{
+            putString("Shop_Id",shoplist[position].id)
+            apply()
+        }
         startActivity(Intent(this@ShopListerClass, ShopProducts::class.java))
     }
 }

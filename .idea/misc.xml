@@ -33,6 +33,7 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_reset_pass.xml" value="0.31197916666666664" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_seller_home.xml" value="0.264" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_settings.xml" value="0.33489583333333334" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_shop_lister_class.xml" value="0.29635416666666664" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_shop_products.xml" value="0.32447916666666665" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_sign_in.xml" value="0.29270833333333335" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.3489583333333333" />
@@ -45,6 +46,8 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/nav_drawer.xml" value="0.264" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/nav_header.xml" value="0.2" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/others_card_view.xml" value="0.315625" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_lister_class_card_view.xml" value="0.29635416666666664" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_products_card_view.xml" value="0.29635416666666664" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/stationary_card_view.xml" value="0.2833333333333333" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/usershoplist_card_view.xml" value="0.315625" />
         <entry key="..\:/Corner_Shop/app/src/main/res/menu/nav_item.xml" value="0.2087378640776699" />
