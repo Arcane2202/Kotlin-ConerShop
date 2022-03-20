@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/Background"
+    app:cardElevation="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleProd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="25dp" />
+            <Button
+                android:id="@+id/addLess"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/itemCount"
+                android:layout_marginLeft="5dp"
+                android:text="-"
+                android:textSize="20dp"
+                android:background="@drawable/custom_button"
+                android:enabled="false"
+                />
+
+            <EditText
+                android:id="@+id/itemCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:editable="false"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:layout_toLeftOf="@id/addMore"
+                android:layout_marginLeft="10dp"
+                android:textSize="25dp"/>
+
+            <Button
+                android:id="@+id/addMore"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="5dp"
+                android:text="+"
+                android:textSize="20dp"
+                android:background="@drawable/custom_button"
+                android:enabled="false"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

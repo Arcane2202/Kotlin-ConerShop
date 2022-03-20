@@ -65,5 +65,11 @@ class SellerHome : Navigation() {
             val intent = Intent(this@SellerHome, Notifications::class.java)
             startActivity(intent)
         }
+
+        stock.setOnClickListener{
+            val intent = Intent(this@SellerHome, StockList::class.java)
+            startActivity(intent)
+        }
+
     }
 }

@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3453125" />
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/custom_button.xml" value="0.3385416666666667" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/drawable/custom_button_round.xml" value="0.32916666666666666" />
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/ic_baseline_phone.xml" value="0.3328125" />
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3453125" />
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/ic_location.xml" value="0.33177083333333335" />
@@ -36,6 +37,7 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_shop_lister_class.xml" value="0.29635416666666664" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_shop_products.xml" value="0.32447916666666665" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_sign_in.xml" value="0.29270833333333335" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_stock_list.xml" value="0.31302083333333336" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_terms_and_conditions.xml" value="0.3489583333333333" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/bottom_bar.xml" value="0.24322916666666666" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/content_order_history.xml" value="0.3489583333333333" />
@@ -49,6 +51,7 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_lister_class_card_view.xml" value="0.29635416666666664" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_products_card_view.xml" value="0.29635416666666664" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/stationary_card_view.xml" value="0.2833333333333333" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/stock_list_card_view.xml" value="0.31302083333333336" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/usershoplist_card_view.xml" value="0.315625" />
         <entry key="..\:/Corner_Shop/app/src/main/res/menu/nav_item.xml" value="0.2087378640776699" />
         <entry key="..\:/Users/HP/Documents/GitHub/Kotlin-ConerShop/app/src/main/res/layout/activity_drugs.xml" value="0.25416666666666665" />
