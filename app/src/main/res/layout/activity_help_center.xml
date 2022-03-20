@@ -50,16 +50,28 @@
         android:layout_below="@+id/report"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:ems="50"
+        android:ems="500"
         android:inputType="text"
 
+        />
+    <Button
+        android:id="@+id/submitProb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/Background"
+        android:layout_below="@id/problem"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
+        android:textSize="20dp"
+        android:text="Submit"
+        android:textColor="@color/black"
         />
 
     <TextView
         android:id="@+id/contact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/problem"
+        android:layout_below="@+id/submitProb"
         android:layout_marginLeft="10dp"
         android:text="Contact with us"
         android:textColor="#514F4F"
@@ -82,12 +94,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/contact"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/phn"
-        android:text="015"
+        android:text="01781780172\n01727302315\n01531184250"
         android:textColor="#514F4F"
-        android:textSize="19dp"
-        />
+        android:textSize="19dp" />
 
 </RelativeLayout>

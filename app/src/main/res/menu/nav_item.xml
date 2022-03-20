@@ -29,13 +29,16 @@
             <item
                 android:id="@+id/settings"
                 android:title="@string/settings"/>
+
+            <item
+                android:id="@+id/helpCenter"
+                android:title="Help Center"/>
+
             <item
                 android:id="@+id/logOutNav"
                 android:title="Logout"/>
 
-            <item
-            android:id="@+id/helpCenter"
-            android:title="Creators"/>
+
 
         </menu>
 

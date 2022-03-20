@@ -15,9 +15,6 @@
             android:name=".StockEdit"
             android:exported="false" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
             android:name=".AddStock"
             android:exported="false" />
         <activity
