@@ -1,6 +1,7 @@
 package project.app.cornershop
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,12 +27,16 @@ class ManageBusiness  : Navigation(),ManageBusinessAdapter.ClickListener {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
     private lateinit var addButton : ImageView
-    
+
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val inflater: LayoutInflater = LayoutInflater.from(this)
         val v: View = inflater.inflate(R.layout.activity_manage_business,null,false)
-        drawerLayout.addView(v,2)
+        drawerLayout.addView(v,0)
 
         val titleName: TextView = findViewById(R.id.titleNav)
         titleName.setText("User Stores")
@@ -41,6 +46,9 @@ class ManageBusiness  : Navigation(),ManageBusinessAdapter.ClickListener {
             val intent = Intent(this@ManageBusiness, createShop :: class.java)
             startActivity(intent)
         }
+
+        sharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
         
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database.getReference("Shops")
@@ -57,7 +65,9 @@ class ManageBusiness  : Navigation(),ManageBusinessAdapter.ClickListener {
                         if(it.child("business_ID").value.toString()==bId){
                             var shops = ShopList(it.child("image").value.toString(),
                                 it.child("name").value.toString(),
-                                it.child("address").value.toString())
+                                it.child("address").value.toString(),
+                                it.child("shop_Id").value.toString()
+                            )
                             shoplist.add(shops)
                         }
                     }
@@ -76,8 +86,11 @@ class ManageBusiness  : Navigation(),ManageBusinessAdapter.ClickListener {
 
     }
 
-
     override fun clickedItem(position: Int) {
-        startActivity(Intent(this@ManageBusiness, ShopProducts::class.java))
+        editor.apply{
+            putString("Shop_Id", shoplist[position].id)
+            apply()
+        }
+        startActivity(Intent(this@ManageBusiness, SellerHome::class.java))
     }
 }

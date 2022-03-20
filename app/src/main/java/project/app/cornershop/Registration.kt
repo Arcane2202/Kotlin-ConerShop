@@ -118,7 +118,7 @@ open class Registration : AppCompatActivity() {
                     if(it.exists()) {
                         Toast.makeText(this, "This phone number is already registered!", Toast.LENGTH_LONG).show()
                     } else {
-
+                        Toast.makeText(this@Registration, "Sending OTP! Please Wait!", Toast.LENGTH_LONG).show()
                         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                             "+88" + uPhone,
                             60,
@@ -132,6 +132,7 @@ open class Registration : AppCompatActivity() {
                                     TODO("Not yet implemented")
                                 }
                                 override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
+                                    Toast.makeText(this@Registration, "OTP Sent!", Toast.LENGTH_LONG).show()
                                     val intent = Intent(this@Registration, OTP_Verification::class.java)
                                     intent.putExtra("codeSent",p0)
                                     intent.putExtra("uName",uName)
@@ -151,7 +152,7 @@ open class Registration : AppCompatActivity() {
     }
     private fun isPhoneValid(phone:String):Boolean {
         val pat = Patterns.PHONE
-        if(pat.matcher(phone).matches()&&phone[0]=='0'&&phone[1]=='1'&&(phone[2]=='3'||phone[2]=='4'||phone[2]=='5'||phone[2]=='6'||phone[2]=='7'||phone[2]=='8'||phone[2]=='9')) {
+        if(pat.matcher(phone).matches()&&phone[0]=='0'&&phone[1]=='1'&&(phone[2]=='3'||phone[2]=='4'||phone[2]=='5'||phone[2]=='6'||phone[2]=='7'||phone[2]=='8'||phone[2]=='9')&&phone.length==11) {
             return true
         }
         return false

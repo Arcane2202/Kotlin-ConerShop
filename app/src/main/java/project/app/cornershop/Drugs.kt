@@ -40,7 +40,7 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
         val titleName:TextView = findViewById(R.id.titleNav)
         titleName.setText("Drug Stores")
 
-        /*cartButton = findViewById(R.id.cartClick)
+        cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)
         notiButton = findViewById(R.id.notiClick)
 
@@ -55,21 +55,26 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
         notiButton.setOnClickListener{
             val intent = Intent(this@Drugs, Notifications::class.java)
             startActivity(intent)
-        }*/
+        }
 
+        val categoryClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("category_Id",null).toString()
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database.getReference("Shops")
+        val userLoc = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Location",null).toString()
 
         val FirebaseListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 shoplist.clear()
-                val child = snapshot.child("1").children
+                val child = snapshot.child(categoryClick).children
                     child.forEach{
-                        var shops = ShopList(it.child("image").value.toString(),
-                            it.child("name").value.toString(),
-                            it.child("address").value.toString())
-                        shoplist.add(shops)
+                        if(it.child("location").value.toString()==userLoc){
+                            var shops = ShopList(it.child("image").value.toString(),
+                                it.child("name").value.toString(),
+                                it.child("address").value.toString(),
+                                it.child("shop_Id").value.toString())
+                            shoplist.add(shops)
+                        }
                     }
                     adapter = DrugsAdapter(shoplist,this@Drugs)
                     recyclerView.adapter = adapter

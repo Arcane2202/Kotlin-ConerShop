@@ -74,9 +74,13 @@ class OTP_Verification : AppCompatActivity() {
                                     Toast.makeText(this@OTP_Verification, "Sign-Up Failed!", Toast.LENGTH_LONG).show()
                                 }
                                 finish()
+                            } else {
+                                Toast.makeText(this@OTP_Verification, "Wrong OTP", Toast.LENGTH_LONG).show()
                             }
                         }
-                    })
+                    }).addOnFailureListener{
+                        Toast.makeText(this@OTP_Verification, "Sign-Up Failed!", Toast.LENGTH_LONG).show()
+                    }
             }
         }
         Resend.setOnClickListener{
