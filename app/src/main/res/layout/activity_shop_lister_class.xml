@@ -5,7 +5,7 @@
     android:paddingTop="?actionBarSize"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Drugs">
+    tools:context=".ShopListerClass">
 
 
     <androidx.core.widget.NestedScrollView
@@ -24,22 +24,6 @@
     <include layout="@layout/activity_bottom_bar"/>
 
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

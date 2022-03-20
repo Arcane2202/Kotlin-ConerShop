@@ -21,38 +21,8 @@
             android:name=".createShop"
             android:exported="false" />
         <activity
-            android:name=".Others"
-            android:exported="false" />
-        <activity
-            android:name=".Food"
-            android:exported="false" />
-        <activity
-            android:name=".Beverage"
-            android:exported="false" />
-        <activity
-            android:name=".HealthandHygiene"
-            android:exported="false" />
-        <activity
-            android:name=".Cosmetics"
-            android:exported="false" />
-        <activity
-            android:name=".Clothes"
-            android:exported="false" />
-        <activity
-            android:name=".Electronics"
-            android:exported="false" />
-        <activity
-            android:name=".Groceries"
-            android:exported="false" />
-        <activity
-            android:name=".Stationary"
-            android:exported="false" />
-        <activity
             android:name=".SellerHome"
             android:exported="true" />
-        <activity
-            android:name=".CreatingBusinessProfile"
-            android:exported="false" />
         <activity
             android:name=".Notifications"
             android:exported="false" />
@@ -63,7 +33,7 @@
             android:name=".Items"
             android:exported="false" />
         <activity
-            android:name=".Drugs"
+            android:name=".ShopListerClass"
             android:exported="false" />
         <activity
             android:name=".OTP_Verification"

@@ -2,24 +2,20 @@ package project.app.cornershop
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
-import com.google.firebase.ktx.Firebase
-import java.text.FieldPosition
 import java.util.ArrayList
 
-class Drugs : Navigation(),DrugsAdapter.ClickListener {
+class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
 
     private var layoutManager : RecyclerView.LayoutManager?=null
-    private var adapter : RecyclerView.Adapter<DrugsAdapter.DrugViewHolder>?=null
+    private var adapter : RecyclerView.Adapter<ShopListerClassAdapter.DrugViewHolder>?=null
 
     var shoplist = ArrayList<ShopList>()
 
@@ -34,32 +30,37 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val inflater: LayoutInflater = LayoutInflater.from(this)
-        val v: View = inflater.inflate(R.layout.activity_drugs,null,false)
+        val v: View = inflater.inflate(R.layout.activity_shop_lister_class,null,false)
         drawerLayout.addView(v,0)
 
         val titleName:TextView = findViewById(R.id.titleNav)
-        titleName.setText("Drug Stores")
 
         cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)
         notiButton = findViewById(R.id.notiClick)
 
         cartButton.setOnClickListener{
-            val intent = Intent(this@Drugs, Items::class.java)
+            val intent = Intent(this@ShopListerClass, Items::class.java)
             startActivity(intent)
         }
         ocrbutton.setOnClickListener{
-            val intent = Intent(this@Drugs, Items::class.java)
+            val intent = Intent(this@ShopListerClass, Items::class.java)
             startActivity(intent)
         }
         notiButton.setOnClickListener{
-            val intent = Intent(this@Drugs, Notifications::class.java)
+            val intent = Intent(this@ShopListerClass, Notifications::class.java)
             startActivity(intent)
         }
 
-        val categoryClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("category_Id",null).toString()
-
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
+        reference = database.getReference("Categories")
+        val categoryClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("category_Id",null).toString()
+        reference.get().addOnSuccessListener {
+            titleName.setText(it.child(categoryClick).value.toString()+" Stores")
+        }.addOnFailureListener{
+            titleName.setText("Stores")
+        }
+
         reference = database.getReference("Shops")
         val userLoc = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Location",null).toString()
 
@@ -76,7 +77,7 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
                             shoplist.add(shops)
                         }
                     }
-                    adapter = DrugsAdapter(shoplist,this@Drugs)
+                    adapter = ShopListerClassAdapter(shoplist,this@ShopListerClass)
                     recyclerView.adapter = adapter
                 }
             override fun onCancelled(error: DatabaseError) {
@@ -92,7 +93,7 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
 
 
     override fun clickedItem(position: Int) {
-        startActivity(Intent(this@Drugs, ShopProducts::class.java))
+        startActivity(Intent(this@ShopListerClass, ShopProducts::class.java))
     }
 }
 

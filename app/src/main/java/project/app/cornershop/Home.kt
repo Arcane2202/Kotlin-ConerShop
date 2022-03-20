@@ -2,12 +2,10 @@ package project.app.cornershop
 
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
-import androidx.appcompat.widget.SwitchCompat
 import androidx.cardview.widget.CardView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -120,7 +118,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         drugs.setOnClickListener{
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","1")
                 apply()
@@ -128,7 +126,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         stationary.setOnClickListener{
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","2")
                 apply()
@@ -136,7 +134,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         groceries.setOnClickListener{
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","3")
                 apply()
@@ -144,7 +142,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         electronics.setOnClickListener{
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","4")
                 apply()
@@ -152,7 +150,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         clothes.setOnClickListener{
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","5")
                 apply()
@@ -160,7 +158,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         cosmetics.setOnClickListener {
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","6")
                 apply()
@@ -168,7 +166,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         health_hygiene.setOnClickListener {
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","7")
                 apply()
@@ -176,7 +174,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         beverage.setOnClickListener {
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","8")
                 apply()
@@ -184,7 +182,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
         food.setOnClickListener {
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","9")
                 apply()
@@ -192,13 +190,12 @@ class Home : Navigation() {
             startActivity(intent)
         }
         others.setOnClickListener {
-            val intent = Intent(this@Home, Drugs::class.java)
+            val intent = Intent(this@Home, ShopListerClass::class.java)
             editor.apply{
                 putString("category_Id","10")
                 apply()
             }
             startActivity(intent)
         }
-
     }
 }

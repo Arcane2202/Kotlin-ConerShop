@@ -6,14 +6,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
 
 
-class DrugsAdapter(private var shopList: MutableList<ShopList>, private var clickListener: ClickListener):RecyclerView.Adapter<DrugsAdapter.DrugViewHolder>(){
+class ShopListerClassAdapter(private var shopList: MutableList<ShopList>, private var clickListener: ClickListener):RecyclerView.Adapter<ShopListerClassAdapter.DrugViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DrugViewHolder {
-        val layout:View = LayoutInflater.from(parent.context).inflate(R.layout.drugs_card_view,parent,false)
+        val layout:View = LayoutInflater.from(parent.context).inflate(R.layout.shop_lister_class_card_view,parent,false)
         return DrugViewHolder(layout)
     }
 

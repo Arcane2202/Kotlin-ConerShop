@@ -1,5 +1,6 @@
 package project.app.cornershop
 
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -73,8 +74,9 @@ class ProfileEditing : AppCompatActivity() {
             }.addOnFailureListener {
                 Toast.makeText(this@ProfileEditing, "Editing Failed!", Toast.LENGTH_LONG).show()
             }
-            finish()
-
+            val intent = Intent(this@ProfileEditing, Profile::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 }
