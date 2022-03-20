@@ -49,7 +49,7 @@ class ManageBusiness  : Navigation(),ManageBusinessAdapter.ClickListener {
 
         sharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
         editor = sharedPreferences.edit()
-        
+
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database.getReference("Shops")
 
