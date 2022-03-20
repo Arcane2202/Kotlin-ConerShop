@@ -1,6 +1,7 @@
 package project.app.cornershop
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,8 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
 
     private var layoutManager : RecyclerView.LayoutManager?=null
     private var adapter : RecyclerView.Adapter<StockListAdapter.StockListViewHolder>?=null
+    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var editor : SharedPreferences.Editor
 
     var itemlist = ArrayList<ItemList>()
 
@@ -77,10 +80,18 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
 
+        sharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
+
     }
 
 
     override fun clickedItem(position: Int) {
+        editor.apply{
+            putString("item_id",itemlist[position].item_id)
+            apply()
+        }
+        startActivity(Intent(this@StockList, Home::class.java))
         
     }
 }

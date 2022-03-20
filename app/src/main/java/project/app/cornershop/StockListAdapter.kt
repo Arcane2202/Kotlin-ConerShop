@@ -18,6 +18,9 @@ class StockListAdapter (private var itemList: MutableList<ItemList>, private var
     }
     override fun onBindViewHolder(holder: StockListViewHolder, position: Int) {
         holder.itemName.text = itemList[position].item
+        holder.itemView.setOnClickListener{
+            clickListener.clickedItem(position)
+        }
     }
     override fun getItemCount(): Int {
         return itemList.size
