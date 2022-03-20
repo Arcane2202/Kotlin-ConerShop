@@ -9,52 +9,66 @@
     tools:context=".AddStock">
 
     <TextView
-        android:id="@+id/titleitemDet"
+        android:id="@+id/titleItemDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Shop Details"
-        android:textSize="30dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
         android:layout_marginBottom="40dp"
-        android:layout_marginTop="150dp"/>
-    <EditText
-        android:id="@+id/ShopName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/titleitemDet"
-        android:layout_marginBottom="10dp"
-        android:ems="50"
-        android:hint="Shop Name"
-        android:inputType="text" />
-    <Spinner
-        android:id="@+id/ShopCat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/ShopName"
-        android:spinnerMode="dropdown" />
+        android:text="Enter Stock Details"
+        android:textSize="30dp" />
 
-    <Spinner
-        android:id="@+id/ShopLoc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/ShopCat"
-        android:spinnerMode="dropdown" />
     <EditText
-        android:id="@+id/ShopAddress"
+        android:id="@+id/ItemName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ShopLoc"
+        android:layout_below="@id/titleItemDet"
         android:layout_marginBottom="10dp"
         android:ems="50"
-        android:hint="Shop Address"
+        android:hint="Item Name"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/ItemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemName"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="Price"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/ItemUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemPrice"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="Unit"
+        android:inputType="text" />
+    <EditText
+        android:id="@+id/ItemStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemUnit"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="In Stock"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/ItemDes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemStock"
+        android:layout_marginBottom="10dp"
+        android:ems="500"
+        android:hint="Description"
         android:inputType="text" />
     <Button
         android:id="@+id/confirmShop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ShopAddress"
+        android:layout_below="@id/ItemDes"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="65dp"
         android:backgroundTint="#455765"
