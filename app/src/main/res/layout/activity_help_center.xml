@@ -4,13 +4,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HelpCenter">
+    tools:context=".Profile">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        />
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:id="@+id/help"
+        android:layout_width="500dp"
+        android:layout_height="?actionBarSize"
+        android:background="#D4F3F5"
+        android:gravity="center"
+        android:text="How can we help?"
+        android:textColor="#3DC3B6"
         android:textSize="25dp"
-        android:text="Help Center"/>
+        android:textStyle="bold"
+        />
+
+
+
+
+    <TextView
+        android:id="@+id/report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/help"
+        android:layout_marginLeft="10dp"
+        android:text="Report your problem"
+        android:textColor="#514F4F"
+        android:textSize="19dp"
+        />
+
+
+    <EditText
+        android:id="@+id/problem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/report"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:ems="50"
+        android:inputType="text"
+
+        />
+
+    <TextView
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/problem"
+        android:layout_marginLeft="10dp"
+        android:text="Contact with us"
+        android:textColor="#514F4F"
+        android:textSize="19dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/phn"
+        android:layout_below="@id/contact"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_baseline_phone"
+        />
+
+    <TextView
+        android:id="@+id/call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contact"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/phn"
+        android:text="015"
+        android:textColor="#514F4F"
+        android:textSize="19dp"
+        />
 
 </RelativeLayout>
