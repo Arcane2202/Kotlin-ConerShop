@@ -1,6 +1,7 @@
 package project.app.cornershop
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
@@ -86,9 +87,9 @@ class createShop : AppCompatActivity() {
             }
         }
         reference.addValueEventListener(FirebaseListenerS)
-        //reference.child("CurrVal").setValue(shopIdCurr)
 
         var tempBusId = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Business_Id",null).toString()
+        var userPhone = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
         if(tempBusId!="-1") {
             businessCurr = tempBusId
         } else {
@@ -105,8 +106,10 @@ class createShop : AppCompatActivity() {
                 }
             }
             reference.addValueEventListener(FirebaseListenerB)
-            //reference.child("CurentVal").setValue(businessCurr)
         }
+
+        val sharedPreferences: SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
 
         confirmShop = findViewById(R.id.confirmShop)
         confirmShop.setOnClickListener{
@@ -115,15 +118,21 @@ class createShop : AppCompatActivity() {
             val locString : String = locations.selectedItem.toString()
             val catString: String = category.selectedItemPosition.toString()
             val imgString = "https://firebasestorage.googleapis.com/v0/b/cornershopmanagement.appspot.com/o/1200px-Shop.svg.png?alt=media&token=6396b1bc-2b8c-40d2-acdf-82378eec4f62"
-
             if(tempBusId!=businessCurr) {
                 database.getReference("BusVal").child("CurentVal").setValue(businessCurr)
+                database.getReference("Users").child(userPhone).child("business_ID").setValue(businessCurr)
+                editor.apply{
+                    putString("Business_Id",businessCurr)
+                }
             }
             database.getReference("ShopVal").child("CurrVal").setValue(shopIdCurr)
             reference = database.getReference("Shops")
             val info = shopDetails(adrsString,catString,imgString,locString,nameString,businessCurr,shopIdCurr)
             reference.child(catString).child(shopIdCurr).setValue(info)
-            finish()
+            Toast.makeText(this@createShop, "Shop Added Successfully", Toast.LENGTH_LONG).show()
+            val intent = Intent(this@createShop, ManageBusiness :: class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            startActivity(intent)
         }
     }
 }

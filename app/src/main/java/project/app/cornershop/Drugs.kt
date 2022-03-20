@@ -40,7 +40,7 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
         val titleName:TextView = findViewById(R.id.titleNav)
         titleName.setText("Drug Stores")
 
-        cartButton = findViewById(R.id.cartClick)
+        /*cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)
         notiButton = findViewById(R.id.notiClick)
 
@@ -55,7 +55,7 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
         notiButton.setOnClickListener{
             val intent = Intent(this@Drugs, Notifications::class.java)
             startActivity(intent)
-        }
+        }*/
 
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -63,6 +63,7 @@ class Drugs : Navigation(),DrugsAdapter.ClickListener {
 
         val FirebaseListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                shoplist.clear()
                 val child = snapshot.child("1").children
                     child.forEach{
                         var shops = ShopList(it.child("image").value.toString(),

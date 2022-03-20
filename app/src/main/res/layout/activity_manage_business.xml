@@ -2,31 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="?actionBarSize"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreatingBusinessProfile">
-
-    <ImageView
-        android:id="@+id/addShopButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/ic_baseline_add_"/>
-
-    <RelativeLayout
-        android:paddingTop="?actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+    tools:context=".ManageBusiness">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/usershoplists"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="60dp"
-        >
+        android:layout_height="match_parent"
+        android:paddingBottom="60dp">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -34,12 +19,17 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    </RelativeLayout>
-
+    <ImageView
+        android:id="@+id/addShopButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_add_"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:layout_marginBottom="5dp"/>
 
 </RelativeLayout>
-
-
 
 
 

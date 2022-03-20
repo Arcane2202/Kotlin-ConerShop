@@ -63,6 +63,7 @@ class Cosmetics : Navigation(),CosmeticsAdapter.ClickListener{
 
         val FirebaseListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                shoplist.clear()
                 val child = snapshot.child("6").children
                 child.forEach{
                     var shops = ShopList(it.child("image").value.toString(),
