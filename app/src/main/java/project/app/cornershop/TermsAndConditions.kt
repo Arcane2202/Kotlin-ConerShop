@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
@@ -24,5 +25,9 @@ class TermsAndConditions : Navigation() {
         drawerLayout.addView(v,0)
         val titleName: TextView = findViewById(R.id.titleNav)
         titleName.setText("Terms & Conditions")
+        val close : Button = findViewById(R.id.close)
+        close.setOnClickListener {
+            startActivity(Intent(this@TermsAndConditions, Home::class.java))
+        }
     }
 }

@@ -75,7 +75,7 @@ class StockEdit : AppCompatActivity() {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
-        
+
         confrimEdit.setOnClickListener {
             val newCount = itemCount.text.toString()
             reference.child(currShopId).child(currItemId).child("stock").setValue(newCount)
