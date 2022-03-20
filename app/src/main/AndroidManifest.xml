@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".AddStock"
+            android:exported="false" />
+        <activity
             android:name=".StockList"
             android:exported="false" />
         <activity
@@ -31,7 +34,7 @@
             android:exported="false" />
         <activity
             android:name=".ShopProducts"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Items"
             android:exported="false" />

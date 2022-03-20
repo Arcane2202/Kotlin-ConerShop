@@ -63,15 +63,18 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
                 itemlist.clear()
                 val child = snapshot.child(shopClick).children
                 child.forEach{
-                        var items = ItemList(it.child("item").value.toString(),
+                    if(it.child("stock").value.toString()!="0") {
+                        var items = ItemList(
+                            it.child("item").value.toString(),
                             it.child("price").value.toString(),
                             it.child("unit").value.toString(),
                             it.child("des").value.toString(),
                             it.child("image").value.toString(),
                             it.child("item_id").value.toString(),
                             it.child("stock").value.toString()
-                            )
+                        )
                         itemlist.add(items)
+                    }
                 }
                 adapter = ShopProductsAdapter(itemlist,this@ShopProducts)
                 recyclerView.adapter = adapter

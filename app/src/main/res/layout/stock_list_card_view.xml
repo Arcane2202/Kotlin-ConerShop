@@ -27,41 +27,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
                 android:textSize="25dp" />
-            <Button
-                android:id="@+id/addLess"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/itemCount"
-                android:layout_marginLeft="5dp"
-                android:text="-"
-                android:textSize="20dp"
-                android:background="@drawable/custom_button"
-                android:enabled="false"
-                />
 
-            <EditText
-                android:id="@+id/itemCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100"
-                android:editable="false"
-                android:layout_marginTop="5dp"
-                android:background="@color/white"
-                android:layout_toLeftOf="@id/addMore"
-                android:layout_marginLeft="10dp"
-                android:textSize="25dp"/>
-
-            <Button
-                android:id="@+id/addMore"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginLeft="5dp"
-                android:text="+"
-                android:textSize="20dp"
-                android:background="@drawable/custom_button"
-                android:enabled="false"
-                />
         </RelativeLayout>
 
     </LinearLayout>

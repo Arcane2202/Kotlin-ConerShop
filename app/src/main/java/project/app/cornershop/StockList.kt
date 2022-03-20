@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,36 +23,25 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    private lateinit var cartButton: ImageView
-    private lateinit var ocrbutton: Button
-    private lateinit var notiButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val inflater: LayoutInflater = LayoutInflater.from(this)
-        val v: View = inflater.inflate(R.layout.activity_shop_products,null,false)
-        drawerLayout.addView(v,0)
+        val v: View = inflater.inflate(R.layout.activity_stock_list,null,false)
+        drawerLayout.addView(v,1)
 
         val titleName: TextView = findViewById(R.id.titleNav)
 
-        cartButton = findViewById(R.id.cartClick)
-        ocrbutton = findViewById(R.id.ocrClick)
-        notiButton = findViewById(R.id.notiClick)
+        val ocrClick : Button = findViewById(R.id.ocrClick)
 
-        cartButton.isVisible = false
-        notiButton.isVisible = false
+        val addStockButton : ImageView = findViewById(R.id.addStockButton)
 
-        cartButton.setOnClickListener{
-            val intent = Intent(this@StockList, Items::class.java)
-            startActivity(intent)
+        addStockButton.setOnClickListener {
+            startActivity(Intent(this@StockList, ShopProducts::class.java))
         }
-        ocrbutton.setOnClickListener{
-            val intent = Intent(this@StockList, Items::class.java)
-            startActivity(intent)
-        }
-        notiButton.setOnClickListener{
-            val intent = Intent(this@StockList, Notifications::class.java)
-            startActivity(intent)
+
+        ocrClick.setOnClickListener{
+            Toast.makeText(this,"Done",Toast.LENGTH_LONG).show()
         }
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -66,15 +53,17 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
                 itemlist.clear()
                 val child = snapshot.child(shopClick).children
                 child.forEach{
-                    var items = ItemList(it.child("item").value.toString(),
-                        it.child("price").value.toString(),
-                        it.child("unit").value.toString(),
-                        it.child("des").value.toString(),
-                        it.child("image").value.toString(),
-                        it.child("item_id").value.toString(),
-                        it.child("stock").value.toString()
-                    )
-                    itemlist.add(items)
+                    if(it.child("stock").value.toString()!="0") {
+                        var items = ItemList(it.child("item").value.toString(),
+                            it.child("price").value.toString(),
+                            it.child("unit").value.toString(),
+                            it.child("des").value.toString(),
+                            it.child("image").value.toString(),
+                            it.child("item_id").value.toString(),
+                            it.child("stock").value.toString()
+                        )
+                        itemlist.add(items)
+                    }
                 }
                 adapter = StockListAdapter(itemlist,this@StockList)
                 recyclerView.adapter = adapter

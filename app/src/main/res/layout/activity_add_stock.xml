@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="30dp"
+    android:paddingEnd="30dp"
+    tools:context=".AddStock">
+
+    <TextView
+        android:id="@+id/titleitemDet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Shop Details"
+        android:textSize="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="150dp"/>
+    <EditText
+        android:id="@+id/ShopName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleitemDet"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="Shop Name"
+        android:inputType="text" />
+    <Spinner
+        android:id="@+id/ShopCat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/ShopName"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/ShopLoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/ShopCat"
+        android:spinnerMode="dropdown" />
+    <EditText
+        android:id="@+id/ShopAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ShopLoc"
+        android:layout_marginBottom="10dp"
+        android:ems="50"
+        android:hint="Shop Address"
+        android:inputType="text" />
+    <Button
+        android:id="@+id/confirmShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ShopAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="65dp"
+        android:backgroundTint="#455765"
+        android:fontFamily="sans-serif-light"
+        android:paddingLeft="20dp"
+        android:text="Confirm"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="22dp"
+        android:layout_marginTop="60dp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
