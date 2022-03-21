@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
 class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
@@ -92,7 +92,70 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
 
 
     override fun clickedItem(position: Int) {
-        startActivity(Intent(this@ShopProducts, ShopProducts::class.java))
-    }
+        //startActivity(Intent(this@ShopProducts, ShopProducts::class.java))
+            val confirmView = LayoutInflater.from(this@ShopProducts).inflate(R.layout.activity_adding_item_in_cart,null)
+            val builderVar = AlertDialog.Builder(this@ShopProducts)
+                .setView(confirmView)
+            val alertDiag = builderVar.show()
+            val itemCount:EditText = confirmView.findViewById(R.id.EditItemCount)
+            val addButton : Button = confirmView.findViewById(R.id.AddButton)
+            val removeButton : Button = confirmView.findViewById(R.id.RemoveButton)
+            val img : ImageView = confirmView.findViewById(R.id.sage)
+            val itemName:TextView = confirmView.findViewById(R.id.titleProd)
+            val unititem : TextView = confirmView.findViewById(R.id.Unit)
+            val itemPrice : TextView = confirmView.findViewById(R.id.price)
+            val itemDesc : TextView = confirmView.findViewById(R.id.prodDesc)
+
+            removeButton.isEnabled = itemCount.text.toString() != "0"
+
+            addButton.setOnClickListener {
+                itemCount.setText((itemCount.text.toString().toInt()+1).toString())
+                removeButton.isEnabled = true
+            }
+            removeButton.setOnClickListener {
+                itemCount.setText((itemCount.text.toString().toInt()-1).toString())
+                if(itemCount.text.toString()=="0") {
+                    removeButton.isEnabled = false
+                }
+            }
+
+           Picasso.get().load(itemlist[position].image).into(img)
+           itemName.setText(itemlist[position].item)
+           unititem.setText(itemlist[position].unit)
+           itemPrice.setText(itemlist[position].price)
+           itemDesc.setText(itemlist[position].des)
+           val itemId = itemlist[position].item_id
+
+           val shopClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Shop_Id",null).toString()
+           val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
+
+
+        confirmView.findViewById<Button>(R.id.AddtoCartButton).setOnClickListener {
+                if(itemCount.text.toString() == "0"){
+                    Toast.makeText(this@ShopProducts,"Select Atleast One Item to Add", Toast.LENGTH_LONG).show()
+                } else {
+                    alertDiag.dismiss()
+                    reference = database.getReference("Cart")
+                    reference.child(currUser).child(itemId).get().addOnSuccessListener{
+                        if(it.exists()) {
+                            val prevCount = it.child("quantity").value.toString().toInt()
+                            val newCount = prevCount + itemCount.text.toString().toInt()
+                            reference.child(currUser).child(itemId).child("quantity").setValue(newCount.toString())
+                        } else {
+                            val itemDet = ItemCartData(itemName.text.toString(),itemCount.text.toString(),shopClick,itemPrice.text.toString(),itemId)
+                            reference.child(currUser).child(itemId).setValue(itemDet).addOnSuccessListener {
+                                Toast.makeText(this@ShopProducts,(itemlist[position].item+" Was Added To Cart"), Toast.LENGTH_LONG).show()
+                            }.addOnFailureListener {
+                                Toast.makeText(this@ShopProducts,(itemlist[position].item+" Could Not Be Added To Cart"), Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            }
+            confirmView.findViewById<ImageView>(R.id.closeDiag).setOnClickListener {
+                Toast.makeText(this@ShopProducts,"Closed", Toast.LENGTH_LONG).show()
+                alertDiag.dismiss()
+            }
+        }
 }
 

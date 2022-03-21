@@ -92,7 +92,6 @@ class StockList : Navigation(),StockListAdapter.ClickListener {
             apply()
         }
         startActivity(Intent(this@StockList, StockEdit::class.java))
-        
     }
 }
 

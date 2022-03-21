@@ -1,103 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="?actionBarSize"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-
-
-
+    android:layout_height="match_parent"
+    tools:context=".ShopListerClass">
 
     <TextView
-        android:id="@+id/itemList"
+        android:id="@+id/titl1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="25dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/titl2"
+        android:layout_toRightOf="@id/titl1"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Quant."
+        android:textSize="25dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/titl3"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@id/titl2"
+        android:text="U.Price"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
+    <TextView
+        android:id="@+id/titl4"
+        android:layout_toRightOf="@id/titl3"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:text="Nt.Price"
+        android:textSize="25dp"
+        android:textColor="@color/black"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/titl1"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/Background"
-        android:gravity="center"
-        android:text="Item List"
-        android:textColor="#90A295"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="150dp"
+        >
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-
-
-
-
+    </androidx.core.widget.NestedScrollView>
 
     <TextView
-        android:id="@+id/title_AllItems"
+        android:id="@+id/titleTot"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_below="@+id/itemList"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="00dp"
-        android:text="Items:"
-        android:textColor="#597A68"
-        android:textSize="22dp"
-        android:textStyle="bold"
-        />
-
-    <TextView
-        android:id="@+id/title_Items"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_below="@+id/title_AllItems"
-
-        />
-
-    <TextView
-        android:id="@+id/title_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_below="@+id/title_Items"
-        android:layout_marginTop="00dp"
-        android:text="Payment Method:"
-        android:textColor="#597A68"
-        android:textSize="22dp"
-        android:textStyle="bold"
-
-
-        />
-
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="35dp"
         android:layout_height="30dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/title_Items"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:layout_toRightOf="@+id/title_payment"
-        />
+        android:text="Total Price"
+        android:textSize="23dp"
+        android:layout_above="@id/checkout"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:textColor="@color/black"/>
 
+    <TextView
+        android:id="@+id/titlebdt"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="BDT "
+        android:textSize="23dp"
+        android:layout_toLeftOf="@id/totalPrice"
+        android:layout_above="@id/checkout"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_above="@id/checkout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="23dp" />
 
     <Button
-        android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="65dp"
-        android:backgroundTint="#597A68"
-        android:fontFamily="sans-serif-light"
-        android:paddingLeft="20dp"
-        android:text="Confirm"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="22dp"
-        android:textStyle="bold"
+        android:id="@+id/checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:paddingBottom="5dp"
-        />
-
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Checkout"
+        android:textSize="20dp" />
 
 </RelativeLayout>
+
+
+
+
+
+
