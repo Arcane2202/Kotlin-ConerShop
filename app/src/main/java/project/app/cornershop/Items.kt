@@ -54,12 +54,13 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                         it.child("quantity").value.toString(),
                         it.child("shop_Id").value.toString(),
                         it.child("uprice").value.toString(),
-                        it.child("item_id").value.toString()
+                        it.child("item_id").value.toString(),
+                        it.child("image").value.toString()
                     )
                     totalPrice.text = (totalPrice.text.toString().toInt() + it.child("uprice").value.toString().toInt()*it.child("quantity").value.toString().toInt()).toString()
                     itemlist.add(items)
                 }
-                adapter = ItemsAdapter(itemlist,this@Items)
+                adapter = ItemsAdapter(itemlist,this@Items, this@Items)
                 recyclerView.adapter = adapter
             }
             override fun onCancelled(error: DatabaseError) {
@@ -113,11 +114,12 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                             it.child("shop_Id").value.toString(),
                             it.child("uprice").value.toString(),
                             it.child("item_id").value.toString(),
+                            it.child("image").value.toString()
                         )
                         totalPrice.text = (totalPrice.text.toString().toInt() + it.child("uprice").value.toString().toInt()*it.child("quantity").value.toString().toInt()).toString()
                         itemlist.add(items)
                     }
-                    adapter = ItemsAdapter(itemlist,this@Items)
+                    adapter = ItemsAdapter(itemlist,this@Items,this@Items)
                     recyclerView.adapter = adapter
                 }
                 override fun onCancelled(error: DatabaseError) {

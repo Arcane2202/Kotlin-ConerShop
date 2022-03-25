@@ -142,7 +142,7 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
                             val newCount = prevCount + itemCount.text.toString().toInt()
                             reference.child(currUser).child(itemId).child("quantity").setValue(newCount.toString())
                         } else {
-                            val itemDet = ItemCartData(itemName.text.toString(),itemCount.text.toString(),shopClick,itemPrice.text.toString(),itemId)
+                            val itemDet = ItemCartData(itemName.text.toString(),itemCount.text.toString(),shopClick,itemPrice.text.toString(),itemId, itemlist[position].image)
                             reference.child(currUser).child(itemId).setValue(itemDet).addOnSuccessListener {
                                 Toast.makeText(this@ShopProducts,(itemlist[position].item+" Was Added To Cart"), Toast.LENGTH_LONG).show()
                             }.addOnFailureListener {

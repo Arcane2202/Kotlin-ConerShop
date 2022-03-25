@@ -7,44 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ShopListerClass">
 
-    <TextView
-        android:id="@+id/titl1"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="25dp"
-        android:layout_marginRight="20dp"
-        android:textColor="@color/black"/>
-    <TextView
-        android:id="@+id/titl2"
-        android:layout_toRightOf="@id/titl1"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:text="Quant."
-        android:textSize="25dp"
-        android:layout_marginRight="20dp"
-        android:textColor="@color/black"/>
-
-    <TextView
-        android:id="@+id/titl3"
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_toRightOf="@id/titl2"
-        android:text="U.Price"
-        android:textColor="@color/black"
-        android:textSize="25dp" />
-    <TextView
-        android:id="@+id/titl4"
-        android:layout_toRightOf="@id/titl3"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:text="Nt.Price"
-        android:textSize="25dp"
-        android:textColor="@color/black"/>
-
     <androidx.core.widget.NestedScrollView
-        android:layout_below="@id/titl1"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
