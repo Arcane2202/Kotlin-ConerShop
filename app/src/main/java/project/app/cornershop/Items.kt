@@ -95,7 +95,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
             reference = database.getReference("Orders")
 
             for(i in 0..itemlist.size) {
-                reference.child(itemlist[0].shop_Id.).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("item").setValue(itemlist[i].item)
+                reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("item").setValue(itemlist[i].item)
                 reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("quantity").setValue(itemlist[i].quantity)
                 reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("uprice").setValue(itemlist[i].uprice)
             }

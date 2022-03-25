@@ -71,7 +71,6 @@ class SignIn : AppCompatActivity() {
         val editor = sharedPreferences.edit()
 
         signinClicked = findViewById(R.id.loginButton)
-
         signinClicked.setOnClickListener{
 
 
