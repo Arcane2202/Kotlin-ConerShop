@@ -107,6 +107,10 @@ class Profile : Navigation() {
                     Toast.makeText(this@Profile,"Successfully Changed",Toast.LENGTH_LONG).show()
                     confirmChangeImage.isVisible = false
                     cancelChangeImage.isVisible = false
+                    editor.apply {
+                        putString("userImg",it.toString())
+                        apply()
+                    }
                 }.addOnFailureListener{
                     Toast.makeText(this@Profile,"Failed",Toast.LENGTH_LONG).show()
                 }

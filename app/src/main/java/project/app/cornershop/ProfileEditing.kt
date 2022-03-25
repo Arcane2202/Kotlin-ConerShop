@@ -59,7 +59,8 @@ class ProfileEditing : AppCompatActivity() {
             val area = locEdit.selectedItem.toString()
             val pass = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Pass",null).toString()
             val business_ID = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Business_Id",null).toString()
-            val users = User(uName, uPhone, area, pass,business_ID)
+            val img = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("userImg",null).toString()
+            val users = User(uName, uPhone, area, pass,business_ID,img)
             reference = database.getReference("Users")
             reference.child(uPhone).setValue(users).addOnSuccessListener {
                 Toast.makeText(this@ProfileEditing, "Successfully Edited!", Toast.LENGTH_LONG).show()

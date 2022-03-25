@@ -82,6 +82,7 @@ class Home : Navigation() {
                 putString("Name",it.child("name").value.toString())
                 putString("Location",it.child("loc").value.toString())
                 putString("Business_Id",it.child("business_ID").value.toString())
+                putString("userImg",it.child("img").value.toString())
                 apply()
             }
         }
