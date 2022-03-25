@@ -60,7 +60,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                     totalPrice.text = (totalPrice.text.toString().toInt() + it.child("uprice").value.toString().toInt()*it.child("quantity").value.toString().toInt()).toString()
                     itemlist.add(items)
                 }
-                adapter = ItemsAdapter(itemlist,this@Items, this@Items)
+                adapter = ItemsAdapter(itemlist,this@Items, this@Items,totalPrice)
                 recyclerView.adapter = adapter
             }
             override fun onCancelled(error: DatabaseError) {
@@ -119,7 +119,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                         totalPrice.text = (totalPrice.text.toString().toInt() + it.child("uprice").value.toString().toInt()*it.child("quantity").value.toString().toInt()).toString()
                         itemlist.add(items)
                     }
-                    adapter = ItemsAdapter(itemlist,this@Items,this@Items)
+                    adapter = ItemsAdapter(itemlist,this@Items,this@Items,totalPrice)
                     recyclerView.adapter = adapter
                 }
                 override fun onCancelled(error: DatabaseError) {

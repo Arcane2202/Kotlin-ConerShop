@@ -67,7 +67,8 @@ class OTP_Verification : AppCompatActivity() {
                         override fun onComplete(task: Task<AuthResult>) {
                             if(task.isSuccessful()) {
                                 Toast.makeText(this@OTP_Verification, "OTP Verified!", Toast.LENGTH_SHORT).show()
-                                val users = User(uName, uPhone, area, passwrd,"-1")
+                                val img = "https://firebasestorage.googleapis.com/v0/b/cornershopmanagement.appspot.com/o/daki.jpg?alt=media&token=30e0ebbf-2f82-42ce-87e3-f268074bf603"
+                                val users = User(uName, uPhone, area, passwrd,"-1",img)
                                 database.child(uPhone.toString()).setValue(users).addOnSuccessListener {
                                     Toast.makeText(this@OTP_Verification, "Successfully Signed Up!", Toast.LENGTH_LONG).show()
                                 }.addOnFailureListener {

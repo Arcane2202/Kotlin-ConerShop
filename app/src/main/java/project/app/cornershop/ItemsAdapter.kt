@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 
-class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var clickListener: ClickListener,var context: Context):
+class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var clickListener: ClickListener,var context: Context, var totalPrice:TextView):
     RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
 
     val sharedPreferences : SharedPreferences = context.getSharedPreferences("Shared_Pref",Context.MODE_PRIVATE)
@@ -39,18 +39,22 @@ class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var 
 
         holder.addButton.setOnClickListener{
             holder.itemQuantity.text = (holder.itemQuantity.text.toString().toInt()+1).toString()
+            holder.redButton.isEnabled = false
+            totalPrice.text = "0"
             updateCart(itemList[position].item_id, holder.itemQuantity.text.toString())
         }
         holder.redButton.setOnClickListener {
             if(holder.itemQuantity.text.toString()=="1") {
-                deleteFromCart(itemList[position].item_id)
+                holder.redButton.isEnabled = false
             }
             else {
                 holder.itemQuantity.text = (holder.itemQuantity.text.toString().toInt()-1).toString()
                 updateCart(itemList[position].item_id,holder.itemQuantity.text.toString())
+                totalPrice.text = "0"
             }
         }
         holder.deleteButton.setOnClickListener {
+            totalPrice.text = "0"
             deleteFromCart(itemList[position].item_id)
         }
     }
