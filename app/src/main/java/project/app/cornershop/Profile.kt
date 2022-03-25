@@ -26,6 +26,10 @@ class Profile : Navigation() {
     private lateinit var imgProfile : ShapeableImageView
     private lateinit var userPhone : String
 
+    private lateinit var changeProfileImage : ImageView
+    private lateinit var cancelChangeImage : ImageView
+    private lateinit var confirmChangeImage : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -56,9 +60,9 @@ class Profile : Navigation() {
         val history:TextView = findViewById(R.id.title_orderHistory)
         val business : LinearLayout = findViewById(R.id.manageBusiness)
         imgProfile = findViewById(R.id.imgProfile)
-        val changeProfileImage : ImageView = findViewById(R.id.changeProfileImage)
-        val cancelChangeImage : ImageView = findViewById(R.id.cancelChangeImage)
-        val confirmChangeImage : ImageView = findViewById(R.id.confirmImageImage)
+        changeProfileImage = findViewById(R.id.changeProfileImage)
+        cancelChangeImage = findViewById(R.id.cancelChangeImage)
+        confirmChangeImage = findViewById(R.id.confirmImageImage)
 
         val editButton:Button = findViewById(R.id.editButton)
         editBut.setOnClickListener{
@@ -91,7 +95,7 @@ class Profile : Navigation() {
         }
 
         confirmChangeImage.setOnClickListener {
-            val filename = getSharedPreferences("Shared_Pref",MODE_PRIVATE).getString("Phone","null").toString() + "'s Profile Image"
+            val filename = getSharedPreferences("Shared_Pref",MODE_PRIVATE).getString("Phone","null").toString() + "_profile_image"
             val storageReference = FirebaseStorage.getInstance("gs://cornershopmanagement.appspot.com").getReference("userimages/$filename")
             storageReference.putFile(ImageUri).addOnSuccessListener {
 
@@ -129,6 +133,10 @@ class Profile : Navigation() {
         if(requestCode == 100 && resultCode == RESULT_OK) {
             ImageUri = data?.data!!
             Picasso.get().load(ImageUri).into(imgProfile)
+        } else {
+            Toast.makeText(this@Profile,"Cancelled",Toast.LENGTH_LONG).show()
+            confirmChangeImage.isVisible = false
+            cancelChangeImage.isVisible = false
         }
     }
 }
