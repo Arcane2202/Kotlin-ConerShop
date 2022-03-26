@@ -1,7 +1,9 @@
 package project.app.cornershop
 
 import android.app.ActivityOptions
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -20,23 +22,41 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         img_logo = findViewById(R.id.img_logo)
+        val sharedPreferences: SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+
+        View.OnClickListener {
+
+                    if (sharedPreferences.getString("Phone", null) != null) {
+                        val intent = Intent(this@MainActivity, Home::class.java)
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent)
+                    } else {
+                        val options = ActivityOptions.makeSceneTransitionAnimation(
+                            this@MainActivity,
+                            Pair.create(img_logo, "logo")
+                        )
+                        val intent = Intent(this@MainActivity, SignIn::class.java)
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent, options.toBundle())
+                    }
+
+        }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            run{
-                val sharedPreferences:SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+                run{
 
-                if(sharedPreferences.getString("Phone",null)!=null) {
-                    val intent = Intent(this@MainActivity, Home::class.java)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    startActivity(intent)
+                    if(sharedPreferences.getString("Phone",null)!=null) {
+                        val intent = Intent(this@MainActivity, Home::class.java)
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent)
+                    }
+                    else {
+                        val options = ActivityOptions.makeSceneTransitionAnimation(this@MainActivity, Pair.create(img_logo,"logo"))
+                        val intent = Intent(this@MainActivity, SignIn::class.java)
+                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent, options.toBundle())
+                    }
                 }
-                else {
-                    val options = ActivityOptions.makeSceneTransitionAnimation(this@MainActivity, Pair.create(img_logo,"logo"))
-                    val intent = Intent(this@MainActivity, SignIn::class.java)
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    startActivity(intent, options.toBundle())
-                }
-            }
         }, 700)
     }
 }
