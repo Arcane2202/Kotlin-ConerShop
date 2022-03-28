@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.cardview.widget.CardView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.nex3z.notificationbadge.NotificationBadge
 
 class Home : Navigation() {
 
@@ -35,12 +36,18 @@ class Home : Navigation() {
     private lateinit var database:FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
+    private lateinit var notiBadge : NotificationBadge
+
     override fun onCreate(savedInstanceState: Bundle?) {
         if(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null)==null) {
             Toast.makeText(this, "Please Login", Toast.LENGTH_LONG).show()
             val intent = Intent(this@Home, SignIn::class.java)
             startActivity(intent)
         }
+
+        notiBadge = findViewById(R.id.notiBadge)
+
+        notiBadge.setNumber(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("CartItemCount",null).toString().toInt())
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database.getReference("Users")

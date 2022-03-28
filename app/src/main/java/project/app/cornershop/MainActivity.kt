@@ -24,36 +24,19 @@ class MainActivity : AppCompatActivity() {
         img_logo = findViewById(R.id.img_logo)
         val sharedPreferences: SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
 
-        View.OnClickListener {
-
-                    if (sharedPreferences.getString("Phone", null) != null) {
-                        val intent = Intent(this@MainActivity, Home::class.java)
-                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        startActivity(intent)
-                    } else {
-                        val options = ActivityOptions.makeSceneTransitionAnimation(
-                            this@MainActivity,
-                            Pair.create(img_logo, "logo")
-                        )
-                        val intent = Intent(this@MainActivity, SignIn::class.java)
-                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        startActivity(intent, options.toBundle())
-                    }
-
-        }
 
         Handler(Looper.getMainLooper()).postDelayed({
                 run{
 
                     if(sharedPreferences.getString("Phone",null)!=null) {
                         val intent = Intent(this@MainActivity, Home::class.java)
-                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(intent)
                     }
                     else {
                         val options = ActivityOptions.makeSceneTransitionAnimation(this@MainActivity, Pair.create(img_logo,"logo"))
                         val intent = Intent(this@MainActivity, SignIn::class.java)
-                        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(intent, options.toBundle())
                     }
                 }

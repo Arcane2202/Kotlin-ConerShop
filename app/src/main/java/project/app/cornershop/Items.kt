@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.nex3z.notificationbadge.NotificationBadge
 import java.util.ArrayList
 
 class Items : Navigation(),ItemsAdapter.ClickListener {
@@ -28,6 +29,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
+    private lateinit var notiBadge : NotificationBadge
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

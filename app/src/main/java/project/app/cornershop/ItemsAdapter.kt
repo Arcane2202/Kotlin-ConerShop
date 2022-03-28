@@ -13,7 +13,9 @@ import android.content.SharedPreferences
 import android.media.Image
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.nex3z.notificationbadge.NotificationBadge
 import com.squareup.picasso.Picasso
+import project.app.cornershop.databinding.ActivityNotificationsBinding
 
 class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var clickListener: ClickListener,var context: Context, var totalPrice:TextView):
     RecyclerView.Adapter<ItemsAdapter.ItemsViewHolder>() {
@@ -68,6 +70,12 @@ class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var 
     }
 
     override fun getItemCount(): Int {
+        val sharedPreferences:SharedPreferences = context.getSharedPreferences("Shared_Pref", AppCompatActivity.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply {
+            putString("CartItemCount",itemList.size.toString())
+            apply()
+        }
         return itemList.size
     }
     class ItemsViewHolder(view: View): RecyclerView.ViewHolder(view){
