@@ -29,7 +29,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
 
-    private lateinit var notiBadge : NotificationBadge
+   // private lateinit var notiBadge : NotificationBadge
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +42,9 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
 
         val checkout : Button = findViewById(R.id.checkout)
         val totalPrice : TextView = findViewById(R.id.totalPrice)
+
+        sharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         val shopClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Shop_Id",null).toString()
@@ -64,6 +67,11 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                 }
                 adapter = ItemsAdapter(itemlist,this@Items, this@Items,totalPrice)
                 recyclerView.adapter = adapter
+
+                editor.apply {
+                    putString("CountCart",itemlist.size.toString())
+                    apply()
+                }
             }
             override fun onCancelled(error: DatabaseError) {
 
@@ -73,9 +81,6 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
         layoutManager = LinearLayoutManager(this)
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
-
-        sharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
-        editor = sharedPreferences.edit()
 
 
         reference = database.getReference("ordereVal")

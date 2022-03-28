@@ -70,12 +70,6 @@ class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var 
     }
 
     override fun getItemCount(): Int {
-        val sharedPreferences:SharedPreferences = context.getSharedPreferences("Shared_Pref", AppCompatActivity.MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
-        editor.apply {
-            putString("CartItemCount",itemList.size.toString())
-            apply()
-        }
         return itemList.size
     }
     class ItemsViewHolder(view: View): RecyclerView.ViewHolder(view){

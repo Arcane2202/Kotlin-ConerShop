@@ -9,8 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.cardview.widget.CardView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.nex3z.notificationbadge.NotificationBadge
 
 class Home : Navigation() {
@@ -45,9 +44,7 @@ class Home : Navigation() {
             startActivity(intent)
         }
 
-        notiBadge = findViewById(R.id.notiBadge)
 
-        notiBadge.setNumber(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("CartItemCount",null).toString().toInt())
 
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         reference = database.getReference("Users")
@@ -75,10 +72,24 @@ class Home : Navigation() {
         beverage = findViewById(R.id.cardBevarage)
         food = findViewById(R.id.cardFood)
         others = findViewById(R.id.cardOthers)
+        notiBadge = findViewById(R.id.notiBadge)
 
         titleName = findViewById(R.id.titleNav)
         titleName.setText("Home")
+        database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
+        val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
+        reference = database.getReference("Cart")
+        val firebaseListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val childCount = snapshot.child(currUser).childrenCount.toInt()
+                notiBadge.setNumber(childCount)
 
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        }
+        reference.addValueEventListener(firebaseListener)
 
         val sharedPreferences: SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -112,8 +123,6 @@ class Home : Navigation() {
         cartButton = findViewById(R.id.cartClick)
         ocrbutton = findViewById(R.id.ocrClick)
         notiButton = findViewById(R.id.notiClick)
-
-
 
         cartButton.setOnClickListener{
             val intent = Intent(this@Home, Items::class.java)

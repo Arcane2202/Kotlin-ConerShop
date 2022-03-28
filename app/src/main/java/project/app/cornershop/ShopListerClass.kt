@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
+import com.nex3z.notificationbadge.NotificationBadge
 import java.util.ArrayList
 
 class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
@@ -64,6 +65,20 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
         }.addOnFailureListener{
             titleName.setText("Stores")
         }
+        val notiBadge : NotificationBadge = findViewById(R.id.notiBadge)
+        val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
+        reference = database.getReference("Cart")
+        val firebaseListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val childCount = snapshot.child(currUser).childrenCount.toInt()
+                notiBadge.setNumber(childCount)
+
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        }
+        reference.addValueEventListener(firebaseListener)
 
         reference = database.getReference("Shops")
         val userLoc = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Location",null).toString()
@@ -106,6 +121,7 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
         }
         startActivity(Intent(this@ShopListerClass, ShopProducts::class.java))
     }
+
 }
 
 
