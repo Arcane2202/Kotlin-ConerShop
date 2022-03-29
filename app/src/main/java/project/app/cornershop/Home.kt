@@ -57,6 +57,9 @@ class Home : Navigation() {
             }
         }
 
+
+
+
         super.onCreate(savedInstanceState)
         val inflater:LayoutInflater = LayoutInflater.from(this)
         val v:View = inflater.inflate(R.layout.activity_home,null,false)
@@ -74,23 +77,12 @@ class Home : Navigation() {
         others = findViewById(R.id.cardOthers)
         notiBadge = findViewById(R.id.notiBadge)
 
+        cartItems(this@Home,notiBadge)
+
         titleName = findViewById(R.id.titleNav)
         titleName.setText("Home")
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
-        reference = database.getReference("Cart")
-        val firebaseListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val childCount = snapshot.child(currUser).childrenCount.toInt()
-                notiBadge.setNumber(childCount)
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        }
-        reference.addValueEventListener(firebaseListener)
-
         val sharedPreferences: SharedPreferences = getSharedPreferences("Shared_Pref", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         reference = database.getReference("Users")

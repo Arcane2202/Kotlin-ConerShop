@@ -1,5 +1,6 @@
 package project.app.cornershop
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -32,6 +33,7 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
     private lateinit var sharedPreferences : SharedPreferences
     private lateinit var editor : SharedPreferences.Editor
 
+    @SuppressLint("InflateParams", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val inflater: LayoutInflater = LayoutInflater.from(this)
@@ -61,35 +63,23 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
         reference = database.getReference("Categories")
         val categoryClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("category_Id",null).toString()
         reference.get().addOnSuccessListener {
-            titleName.setText(it.child(categoryClick).value.toString()+" Stores")
+            titleName.text = it.child(categoryClick).value.toString()+" Stores"
         }.addOnFailureListener{
-            titleName.setText("Stores")
+            titleName.text = "Stores"
         }
         val notiBadge : NotificationBadge = findViewById(R.id.notiBadge)
-        val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
-        reference = database.getReference("Cart")
-        val firebaseListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val childCount = snapshot.child(currUser).childrenCount.toInt()
-                notiBadge.setNumber(childCount)
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        }
-        reference.addValueEventListener(firebaseListener)
-
+        //val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
+        cartItems(this@ShopListerClass, notiBadge)
         reference = database.getReference("Shops")
         val userLoc = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Location",null).toString()
 
-        val FirebaseListener = object : ValueEventListener{
+        val firebaseListener = object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 shoplist.clear()
                 val child = snapshot.child(categoryClick).children
                     child.forEach{
                         if(it.child("location").value.toString()==userLoc){
-                            var shops = ShopList(it.child("image").value.toString(),
+                            val shops = ShopList(it.child("image").value.toString(),
                                 it.child("name").value.toString(),
                                 it.child("address").value.toString(),
                                 it.child("shop_Id").value.toString())
@@ -103,7 +93,7 @@ class ShopListerClass : Navigation(),ShopListerClassAdapter.ClickListener {
 
             }
         }
-        reference.addValueEventListener(FirebaseListener)
+        reference.addValueEventListener(firebaseListener)
         layoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager

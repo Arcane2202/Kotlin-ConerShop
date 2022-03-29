@@ -2,6 +2,8 @@ package project.app.cornershop
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -12,12 +14,12 @@ import android.view.View
 import android.widget.*
 import androidx.core.view.isVisible
 import com.google.android.material.imageview.ShapeableImageView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
+import java.util.ArrayList
 
 class Profile : Navigation() {
 
@@ -30,9 +32,10 @@ class Profile : Navigation() {
     private lateinit var cancelChangeImage : ImageView
     private lateinit var confirmChangeImage : ImageView
 
+    private var flag : Boolean = false
+    private var locationlist = ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
 
         var titleName : TextView
 
@@ -53,22 +56,15 @@ class Profile : Navigation() {
         titleName = findViewById(R.id.titleNav)
         titleName.setText("Profile")
 
-        val name:TextView = findViewById(R.id.title_fullname)
-        val phoneNo:TextView = findViewById(R.id.title_phone)
-        val location : TextView = findViewById(R.id.locate)
+        var name:EditText = findViewById(R.id.title_fullname)
+        var phoneNo:EditText = findViewById(R.id.title_phone)
+        val location : EditText = findViewById(R.id.locate)
         val editBut : Button = findViewById(R.id.editButton)
         val history:TextView = findViewById(R.id.title_orderHistory)
         val business : LinearLayout = findViewById(R.id.manageBusiness)
-        imgProfile = findViewById(R.id.imgProfile)
-        changeProfileImage = findViewById(R.id.changeProfileImage)
-        cancelChangeImage = findViewById(R.id.cancelChangeImage)
-        confirmChangeImage = findViewById(R.id.confirmImageImage)
+        val confirm : Button = findViewById(R.id.confirmEditButton)
+        val cancel : Button = findViewById(R.id.cancelEditButton)
 
-        val editButton:Button = findViewById(R.id.editButton)
-        editBut.setOnClickListener{
-            val intent = Intent(this@Profile, ProfileEditing :: class.java)
-            startActivity(intent)
-        }
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
         userPhone = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
 
@@ -85,47 +81,109 @@ class Profile : Navigation() {
                 apply()
             }
         }
+
+        val dropdownSelect : Spinner = findViewById(R.id.locEditBox)
+        database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Locations")
+        locationlist.add("Select Area")
+        val FirebaseListenerLoc = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val child = snapshot.children
+                child.forEach{
+                    locationlist.add(it.value.toString())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        }
+        database.addValueEventListener(FirebaseListenerLoc)
+        val adapterloc = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, locationlist)
+        dropdownSelect.adapter = adapterloc
+        dropdownSelect.setSelection(0)
+
+        imgProfile = findViewById(R.id.imgProfile)
+        changeProfileImage = findViewById(R.id.changeProfileImage)
+        cancelChangeImage = findViewById(R.id.cancelChangeImage)
+        confirmChangeImage = findViewById(R.id.confirmImageImage)
+
+        val editButton:Button = findViewById(R.id.editButton)
+        editBut.setOnClickListener{
+            /*val intent = Intent(this@Profile, ProfileEditing :: class.java)
+            startActivity(intent)*/
+            name.isEnabled = true
+            dropdownSelect.visibility = Spinner.VISIBLE
+            location.visibility = EditText.INVISIBLE
+            confirm.visibility = Button.VISIBLE
+            cancel.visibility = Button.VISIBLE
+            editButton.visibility = Button.INVISIBLE
+            changeProfileImage.visibility = ImageView.VISIBLE
+        }
+
         changeProfileImage.setOnClickListener {
-            cancelChangeImage.visibility = ImageView.VISIBLE
-            confirmChangeImage.visibility = ImageView.VISIBLE
             val intent:Intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(intent,100)
         }
+        confirm.setOnClickListener {
 
-        confirmChangeImage.setOnClickListener {
-            val filename = getSharedPreferences("Shared_Pref",MODE_PRIVATE).getString("Phone","null").toString() + "_profile_image"
-            val storageReference = FirebaseStorage.getInstance("gs://cornershopmanagement.appspot.com").getReference("userimages/$filename")
-            storageReference.putFile(ImageUri).addOnSuccessListener {
+            database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
 
-                val ref = FirebaseStorage.getInstance("gs://cornershopmanagement.appspot.com").getReference("userimages")
-
-                ref.child(filename).downloadUrl.addOnSuccessListener {
-                    database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("Users")
-                    database.child(userPhone).child("img").setValue(it.toString())
-                    Toast.makeText(this@Profile,"Successfully Changed",Toast.LENGTH_LONG).show()
-                    confirmChangeImage.isVisible = false
-                    cancelChangeImage.isVisible = false
-                    editor.apply {
-                        putString("userImg",it.toString())
-                        apply()
+            if(flag) {
+                val filename = getSharedPreferences("Shared_Pref",MODE_PRIVATE).getString("Phone","null").toString() + "_profile_image"
+                val storageReference = FirebaseStorage.getInstance("gs://cornershopmanagement.appspot.com").getReference("userimages/$filename")
+                storageReference.putFile(ImageUri).addOnSuccessListener {
+                    val ref = FirebaseStorage.getInstance("gs://cornershopmanagement.appspot.com").getReference("userimages")
+                    ref.child(filename).downloadUrl.addOnSuccessListener {
+                        database.child(userPhone).child("img").setValue(it.toString())
+                        Toast.makeText(this@Profile,"Image Uploaded",Toast.LENGTH_LONG).show()
+                        editor.apply {
+                            putString("userImg",it.toString())
+                            apply()
+                        }
+                    }.addOnFailureListener{
+                        Toast.makeText(this@Profile,"Image Upload Failed",Toast.LENGTH_LONG).show()
+                        Picasso.get().load(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("userImg","null").toString()).into(imgProfile)
                     }
                 }.addOnFailureListener{
-                    Toast.makeText(this@Profile,"Failed",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@Profile,"Image Upload Failed",Toast.LENGTH_LONG).show()
+                    Picasso.get().load(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("userImg","null").toString()).into(imgProfile)
                 }
-            }.addOnFailureListener{
-                Toast.makeText(this@Profile,"Failed",Toast.LENGTH_LONG).show()
             }
+                database.child(userPhone).child("name").setValue(name.text.toString())
+                if(dropdownSelect.selectedItem.toString()!="Select Area") {
+                    database.child(userPhone).child("loc").setValue(dropdownSelect.selectedItem.toString())
+                    location.setText(dropdownSelect.selectedItem.toString())
+                }
+                Toast.makeText(this@Profile,"Profile Information Changed Successfully",Toast.LENGTH_LONG).show()
+                editor.apply {
+                    putString("Name",name.text.toString())
+                    putString("Location",dropdownSelect.selectedItem.toString())
+                    apply()
+                }
+                name.isEnabled = false
+                dropdownSelect.visibility = Spinner.INVISIBLE
+                location.visibility = EditText.VISIBLE
+                confirm.visibility = Button.INVISIBLE
+                cancel.visibility = Button.INVISIBLE
+                editButton.visibility = Button.VISIBLE
+                location.isEnabled = false
+                changeProfileImage.visibility = ImageView.INVISIBLE
         }
-
-        cancelChangeImage.setOnClickListener{
+        cancel.setOnClickListener{
             Toast.makeText(this@Profile,"Cancelled",Toast.LENGTH_LONG).show()
-            confirmChangeImage.isVisible = false
-            cancelChangeImage.isVisible = false
             Picasso.get().load(getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("userImg","null").toString()).into(imgProfile)
+            name.setText(getSharedPreferences("Shared_Pref",MODE_PRIVATE).getString("Name","null").toString())
+            location.setText(getSharedPreferences("Shared_Pref",MODE_PRIVATE).getString("Location","null").toString())
+            name.isEnabled = false
+            dropdownSelect.visibility = Spinner.INVISIBLE
+            location.visibility = EditText.VISIBLE
+            location.isEnabled = false
+            confirm.visibility = Button.INVISIBLE
+            cancel.visibility = Button.INVISIBLE
+            editButton.visibility = Button.VISIBLE
+            changeProfileImage.visibility = ImageView.INVISIBLE
         }
-
         business.setOnClickListener{
             val intent = Intent(this@Profile, ManageBusiness :: class.java)
             startActivity(intent)
@@ -133,14 +191,10 @@ class Profile : Navigation() {
     }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if(requestCode == 100 && resultCode == RESULT_OK) {
             ImageUri = data?.data!!
             Picasso.get().load(ImageUri).into(imgProfile)
-        } else {
-            Toast.makeText(this@Profile,"Cancelled",Toast.LENGTH_LONG).show()
-            confirmChangeImage.isVisible = false
-            cancelChangeImage.isVisible = false
+            flag = true
         }
     }
 }

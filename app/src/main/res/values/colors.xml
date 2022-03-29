@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Background">#D5E1DF</color>
     <color name="color1">#63DDDD</color>
+    <color name="disable">#666666</color>
 </resources>

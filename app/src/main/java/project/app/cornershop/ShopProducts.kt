@@ -58,20 +58,7 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
 
         val notiBadge : NotificationBadge = findViewById(R.id.notiBadge)
-        val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
-        reference = database.getReference("Cart")
-        val firebaseListener = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val childCount = snapshot.child(currUser).childrenCount.toInt()
-                notiBadge.setNumber(childCount)
-
-            }
-            override fun onCancelled(error: DatabaseError) {
-
-            }
-        }
-        reference.addValueEventListener(firebaseListener)
-
+        cartItems(this@ShopProducts,notiBadge)
         val shopClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Shop_Id",null).toString()
         titleName.setText("Items")
         reference = database.getReference("items")
