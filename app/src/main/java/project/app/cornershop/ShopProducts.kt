@@ -29,6 +29,7 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
     private lateinit var cartButton: ImageView
     private lateinit var ocrbutton: Button
     private lateinit var notiButton: ImageView
+    private lateinit var ref : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -111,7 +112,6 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
             val itemDesc : TextView = confirmView.findViewById(R.id.prodDesc)
 
             removeButton.isEnabled = itemCount.text.toString() != "0"
-
             addButton.setOnClickListener {
                 itemCount.setText((itemCount.text.toString().toInt()+1).toString())
                 removeButton.isEnabled = true
@@ -140,17 +140,46 @@ class ShopProducts : Navigation(),ShopProductsAdapter.ClickListener {
                 } else {
                     alertDiag.dismiss()
                     reference = database.getReference("Cart")
-                    reference.child(currUser).child(itemId).get().addOnSuccessListener{
-                        if(it.exists()) {
-                            val prevCount = it.child("quantity").value.toString().toInt()
-                            val newCount = prevCount + itemCount.text.toString().toInt()
-                            reference.child(currUser).child(itemId).child("quantity").setValue(newCount.toString())
+                    reference.child(currUser).child("shop_id").get().addOnSuccessListener {
+                        if(it.value.toString()==shopClick) {
+                            ref = database.getReference("Cart").child(currUser).child("cart_items")
+                            ref.child(itemId).get().addOnSuccessListener {
+                                if(it.exists()) {
+                                    val prevCount = it.child("quantity").value.toString().toInt()
+                                    val newCount = prevCount + itemCount.text.toString().toInt()
+                                    ref.child(itemId).child("quantity").setValue(itemCount.text.toString())
+                                } else {
+                                    val itemDet = ItemCartData(itemName.text.toString(),itemCount.text.toString(),shopClick,itemPrice.text.toString(),itemId, itemlist[position].image)
+                                    ref.child(itemId).setValue(itemDet).addOnSuccessListener {
+                                        Toast.makeText(this@ShopProducts,(itemlist[position].item+" Was Added To Cart"), Toast.LENGTH_LONG).show()
+                                    }.addOnFailureListener {
+                                        Toast.makeText(this@ShopProducts,(itemlist[position].item+" Could Not Be Added To Cart"), Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                            }
                         } else {
-                            val itemDet = ItemCartData(itemName.text.toString(),itemCount.text.toString(),shopClick,itemPrice.text.toString(),itemId, itemlist[position].image)
-                            reference.child(currUser).child(itemId).setValue(itemDet).addOnSuccessListener {
-                                Toast.makeText(this@ShopProducts,(itemlist[position].item+" Was Added To Cart"), Toast.LENGTH_LONG).show()
-                            }.addOnFailureListener {
-                                Toast.makeText(this@ShopProducts,(itemlist[position].item+" Could Not Be Added To Cart"), Toast.LENGTH_LONG).show()
+                            //Toast.makeText(this@ShopProducts,("Cannot items from different shops"), Toast.LENGTH_LONG).show()
+                            alertDiag.dismiss()
+                            val confirmView2 = LayoutInflater.from(this@ShopProducts).inflate(R.layout.confirm_replace,null)
+                            val builderVar2 = AlertDialog.Builder(this@ShopProducts).setView(confirmView2)
+                            val alertDiag2 = builderVar2.show()
+                            val confirmAdd : Button = confirmView2.findViewById(R.id.confirmAdd)
+                            val cancelAdd : Button = confirmView2.findViewById(R.id.cancelAdd)
+                            confirmAdd.setOnClickListener {
+                                alertDiag2.dismiss()
+                                ref = database.getReference("Cart").child(currUser)
+                                ref.child("shop_id").setValue(shopClick)
+                                ref.child("cart_items").removeValue()
+                                val itemDet = ItemCartData(itemName.text.toString(),itemCount.text.toString(),shopClick,itemPrice.text.toString(),itemId, itemlist[position].image)
+                                ref.child("cart_items").child(itemId).setValue(itemDet).addOnSuccessListener {
+                                    Toast.makeText(this@ShopProducts,(itemlist[position].item+" Was Added To Cart"), Toast.LENGTH_LONG).show()
+                                }.addOnFailureListener {
+                                    Toast.makeText(this@ShopProducts,(itemlist[position].item+" Could Not Be Added To Cart"), Toast.LENGTH_LONG).show()
+                                }
+                            }
+                            cancelAdd.setOnClickListener {
+                                alertDiag2.dismiss()
+                                Toast.makeText(this@ShopProducts,"Item Was Not Added", Toast.LENGTH_LONG).show()
                             }
                         }
                     }

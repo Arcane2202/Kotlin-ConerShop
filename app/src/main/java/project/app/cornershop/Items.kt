@@ -49,11 +49,11 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
         database = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
         val shopClick = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Shop_Id",null).toString()
         val currUser = getSharedPreferences("Shared_Pref", MODE_PRIVATE).getString("Phone",null).toString()
-        reference = database.getReference("Cart")
+        reference = database.getReference("Cart").child(currUser).child("cart_items")
         val FirebaseListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 itemlist.clear()
-                val child = snapshot.child(currUser).children
+                val child = snapshot.children
                 child.forEach{
                     var items = ItemCartData(it.child("item").value.toString(),
                         it.child("quantity").value.toString(),

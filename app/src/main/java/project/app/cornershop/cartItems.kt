@@ -9,10 +9,10 @@ fun cartItems(context:Context,notiBadge : NotificationBadge) {
     var currUser = context.getSharedPreferences("Shared_Pref", AppCompatActivity.MODE_PRIVATE).getString("Phone",null).toString()
     var childCount : Int = 0
     var database : FirebaseDatabase = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
-    var reference : DatabaseReference = database.getReference("Cart")
+    var reference : DatabaseReference = database.getReference("Cart").child(currUser).child("cart_items")
     val firebaseListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
-            childCount = snapshot.child(currUser).childrenCount.toInt()
+            childCount = snapshot.childrenCount.toInt()
             notiBadge.setNumber(childCount)
         }
         override fun onCancelled(error: DatabaseError) {

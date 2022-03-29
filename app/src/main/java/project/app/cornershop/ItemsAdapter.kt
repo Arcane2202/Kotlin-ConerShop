@@ -62,11 +62,11 @@ class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var 
     }
 
     private fun updateCart(position: String, quant : String) {
-        reference.child(currUser).child(position).child("quantity").setValue(quant)
+        reference.child(currUser).child("cart_items").child(position).child("quantity").setValue(quant)
     }
 
     private fun deleteFromCart(position: String) {
-        reference.child(currUser).child(position).removeValue()
+        reference.child(currUser).child("cart_items").child(position).removeValue()
     }
 
     override fun getItemCount(): Int {
