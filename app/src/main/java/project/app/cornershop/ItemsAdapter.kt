@@ -72,6 +72,7 @@ class ItemsAdapter(private var itemList: MutableList<ItemCartData>, private var 
     override fun getItemCount(): Int {
         return itemList.size
     }
+
     class ItemsViewHolder(view: View): RecyclerView.ViewHolder(view){
         var itemImage : ImageView = view.findViewById(R.id.itemImage)
         var itemName: TextView = view.findViewById(R.id.ItemName)

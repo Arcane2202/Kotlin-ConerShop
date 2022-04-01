@@ -11,7 +11,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="0dp"
+        android:paddingBottom="60dp"
         >
 
         <androidx.recyclerview.widget.RecyclerView
@@ -20,6 +20,7 @@
             android:layout_height="match_parent" />
 
     </androidx.core.widget.NestedScrollView>
+
 
     <include layout="@layout/activity_bottom_bar"/>
 

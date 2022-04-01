@@ -25,4 +25,5 @@
     <string name="ocr">OCR</string>
     <string name="health_hygiene"><![CDATA[HEALTH & HYGIENE]]></string>
     <string name="food_snacks"><![CDATA[FOOD & SNACKS]]></string>
+    <string name="PackagePending">pending_pack</string>
 </resources>

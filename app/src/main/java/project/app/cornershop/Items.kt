@@ -28,6 +28,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
     private lateinit var recyclerView : RecyclerView
     private lateinit var database: FirebaseDatabase
     private lateinit var reference: DatabaseReference
+    private lateinit var currOrderId : String
 
    // private lateinit var notiBadge : NotificationBadge
 
@@ -83,64 +84,37 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
         recyclerView.layoutManager = layoutManager
 
 
-        reference = database.getReference("ordereVal")
-        val FirebaseListenerS = object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val child = snapshot.children
-                child.forEach{
-                    orderIdCurr = (it.value.toString().toInt() + 1).toString()
-                }
-            }
-            override fun onCancelled(error: DatabaseError) {
 
-            }
+        var orderRef = database.getReference("ordereVal")
+        orderRef.get().addOnSuccessListener {
+            currOrderId = (it.child("crvalue").value.toString().toInt()+1).toString()
         }
-        reference.addValueEventListener(FirebaseListenerS)
-
 
         checkout.setOnClickListener {
-
-            reference = database.getReference("Orders")
-
-            for(i in 0..itemlist.size) {
-                reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("item").setValue(itemlist[i].item)
-                reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("quantity").setValue(itemlist[i].quantity)
-                reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("item_id").child(itemlist[i].item_id).child("uprice").setValue(itemlist[i].uprice)
-            }
-            reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("phone").setValue(currUser)
-            reference.child(itemlist[0].shop_Id).child(orderIdCurr).child("status").setValue("pending")
-
-
-            val FirebaseListener = object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    itemlist.clear()
-                    val child = snapshot.child(currUser).children
-                    child.forEach{
-                        var items = ItemCartData(it.child("item").value.toString(),
-                            it.child("quantity").value.toString(),
-                            it.child("shop_Id").value.toString(),
-                            it.child("uprice").value.toString(),
-                            it.child("item_id").value.toString(),
-                            it.child("image").value.toString()
-                        )
-                        totalPrice.text = (totalPrice.text.toString().toInt() + it.child("uprice").value.toString().toInt()*it.child("quantity").value.toString().toInt()).toString()
-                        itemlist.add(items)
+            if(itemlist.size==0) {
+                Toast.makeText(this,"Add Items To The Cart In Order To Place An Order!",Toast.LENGTH_LONG).show()
+            } else {
+                //Toast.makeText(this,currOrderId,Toast.LENGTH_LONG).show()
+                reference = database.getReference("pending_orders").child(currOrderId)
+                reference.child("customer").setValue(currUser)
+                reference.child("shop_id").setValue(itemlist[0].shop_Id)
+                for (i in itemlist) {
+                    reference.child("items_det").child(i.item_id).setValue(i)
+                }
+                reference.child("status").setValue(getString(R.string.PackagePending))
+                    .addOnSuccessListener {
+                        database.getReference("Cart").child(currUser).removeValue()
+                        database.getReference("ordereVal").child("crvalue").setValue(currOrderId)
+                        totalPrice.text = "0"
+                        Toast.makeText(this, "Order Placed!", Toast.LENGTH_LONG).show()
                     }
-                    adapter = ItemsAdapter(itemlist,this@Items,this@Items,totalPrice)
-                    recyclerView.adapter = adapter
-                }
-                override fun onCancelled(error: DatabaseError) {
-
-                }
             }
-            reference.addValueEventListener(FirebaseListener)
-
         }
     }
 
     override fun clickedItem(position: Int) {
         //startActivity(Intent(this@Items, StockEdit::class.java))
-        Toast.makeText(this@Items,"Item Clicked",Toast.LENGTH_LONG).show()
+        //Toast.makeText(this@Items,"Item Clicked",Toast.LENGTH_LONG).show()
     }
 }
 

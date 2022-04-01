@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
+
     >
 
     <ImageView
@@ -21,9 +22,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         app:cardElevation="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp">
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -31,7 +33,7 @@
             <ImageView
                 android:id="@+id/sage"
                 android:layout_width="match_parent"
-                android:layout_height="165dp"
+                android:layout_height="145dp"
                 android:src="@drawable/sage"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"/>
@@ -68,76 +70,87 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <Button
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/RemoveButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_below="@id/cardView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/custom_button_round"
-        android:text="-"
+        android:layout_toLeftOf="@id/EditItemCount"
+        android:background="@color/Background"
+        android:src="@drawable/ic_baseline_reduce"
         android:textAlignment="center"
-        android:textSize="30dp" />
+        app:shapeAppearanceOverlay="@style/Circler" />
 
     <EditText
         android:id="@+id/EditItemCount"
-        android:layout_width="200dp"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/cardView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="21dp"
+        android:layout_toLeftOf="@id/AddButton"
         android:background="@color/white"
         android:text="0"
         android:textAlignment="center"
         android:textSize="30dp" />
-    <Button
+
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/AddButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:text="+"
-        android:textSize="30dp"
-        android:textAlignment="center"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_below="@id/cardView"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/custom_button_round"
-        />
+        android:background="@color/Background"
+        app:shapeAppearanceOverlay="@style/Circler"
+        android:src="@drawable/ic_baseline_adder"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/AddtoCartButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
+        android:layout_below="@id/cardView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="30dp"
+        android:backgroundTint="#455765"
         android:text="Add to cart"
-        android:textSize="20dp"/>
+        android:textColor="@color/white"
+        android:textSize="18dp" />
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/AddButton"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="50dp"
         android:text="Description"
-        android:textSize="25dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
         android:textColor="@color/black"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/prodDesc"
+        android:layout_marginStart="16dp"
+        android:layout_alignParentStart="true"/>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
         android:layout_below="@id/description"
-        android:text="Confused Stuffs"
-        android:layout_marginLeft="5dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="16dp"
+        android:paddingBottom="20dp"
+        >
 
+        <TextView
+            android:id="@+id/prodDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Confused Stuffs"
+            android:textAlignment="viewStart"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/black" />
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
-

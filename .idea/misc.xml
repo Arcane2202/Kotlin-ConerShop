@@ -9,7 +9,7 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3453125" />
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/ic_location.xml" value="0.33177083333333335" />
         <entry key="..\:/Corner_Shop/app/src/main/res/drawable/toolbar_bg.xml" value="0.19444444444444445" />
-        <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_adding_item_in_cart.xml" value="0.33177083333333335" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_adding_item_in_cart.xml" value="0.264" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_bottom_bar.xml" value="0.536" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_buyer_profile.xml" value="0.31666666666666665" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_create_shop.xml" value="0.340625" />
@@ -27,6 +27,7 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_order_history.xml" value="0.3489583333333333" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_otp_verification.xml" value="0.3489583333333333" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_otp_verification_password.xml" value="0.3260416666666667" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_pending_packaging.xml" value="0.31614583333333335" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_profile.xml" value="0.3182291666666667" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_profile_editing.xml" value="0.2749094202898551" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/activity_registration.xml" value="0.23731884057971014" />
@@ -46,13 +47,16 @@
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/content_order_history.xml" value="0.3489583333333333" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/drugs_card_view.xml" value="0.31354166666666666" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/fragment_item_describer.xml" value="0.31927083333333334" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/fragment_profile.xml" value="0.3963541666666667" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/items_card_view.xml" value="0.31666666666666665" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/nav_drawer.xml" value="0.264" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/nav_header.xml" value="0.2" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/order_details_card_view.xml" value="0.31614583333333335" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/others_card_view.xml" value="0.315625" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/pending_packaging_card_view.xml" value="0.31614583333333335" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_lister_class_card_view.xml" value="0.31666666666666665" />
-        <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_products_card_view.xml" value="0.20697463768115942" />
+        <entry key="..\:/Corner_Shop/app/src/main/res/layout/shop_products_card_view.xml" value="0.4" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/stationary_card_view.xml" value="0.2833333333333333" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/stock_list_card_view.xml" value="0.28532608695652173" />
         <entry key="..\:/Corner_Shop/app/src/main/res/layout/usershoplist_card_view.xml" value="0.315625" />

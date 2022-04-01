@@ -71,5 +71,9 @@ class SellerHome : Navigation() {
             startActivity(intent)
         }
 
+        packages.setOnClickListener{
+            val intent = Intent(this@SellerHome, PendingPackaging::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".PendingPackaging"
+            android:exported="false" />
+        <activity
             android:name=".AddingItemInCart"
             android:exported="false" />
         <activity
