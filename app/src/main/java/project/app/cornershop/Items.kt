@@ -83,8 +83,6 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
 
-
-
         var orderRef = database.getReference("ordereVal")
         orderRef.get().addOnSuccessListener {
             currOrderId = (it.child("crvalue").value.toString().toInt()+1).toString()
@@ -98,6 +96,8 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                 reference = database.getReference("pending_orders").child(currOrderId)
                 reference.child("customer").setValue(currUser)
                 reference.child("shop_id").setValue(itemlist[0].shop_Id)
+                reference.child("total_price").setValue(totalPrice.text.toString())
+                reference.child("order_no").setValue(currOrderId)
                 for (i in itemlist) {
                     reference.child("items_det").child(i.item_id).setValue(i)
                 }

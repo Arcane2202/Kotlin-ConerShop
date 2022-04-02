@@ -88,7 +88,7 @@ class ManageBusiness  : Navigation(),ManageBusinessAdapter.ClickListener {
 
     override fun clickedItem(position: Int) {
         editor.apply{
-            putString("Shop_Id", shoplist[position].id)
+            putString("Shop_Inter", shoplist[position].id)
             apply()
         }
         startActivity(Intent(this@ManageBusiness, SellerHome::class.java))
