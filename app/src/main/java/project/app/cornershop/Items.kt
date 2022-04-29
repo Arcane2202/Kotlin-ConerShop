@@ -90,7 +90,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
 
         checkout.setOnClickListener {
             if(itemlist.size==0) {
-                Toast.makeText(this,"Add Items To The Cart In Order To Place An Order!",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Add Items To The Cart In Order To Place An Order!",Toast.LENGTH_SHORT).show()
             } else {
                 //Toast.makeText(this,currOrderId,Toast.LENGTH_LONG).show()
                 reference = database.getReference("pending_orders").child(currOrderId)
@@ -106,7 +106,7 @@ class Items : Navigation(),ItemsAdapter.ClickListener {
                         database.getReference("Cart").child(currUser).removeValue()
                         database.getReference("ordereVal").child("crvalue").setValue(currOrderId)
                         totalPrice.text = "0"
-                        Toast.makeText(this, "Order Placed!", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Order Placed!", Toast.LENGTH_SHORT).show()
                     }
             }
         }

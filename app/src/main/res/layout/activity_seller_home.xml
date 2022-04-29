@@ -54,7 +54,7 @@
                     android:id="@+id/Packages"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pending Packaging"
+                    android:text="Pending Orders"
                     android:padding="20dp"
                     android:textSize="25dp"
                     android:layout_marginBottom="20dp"
@@ -63,52 +63,28 @@
                     />
 
             </androidx.cardview.widget.CardView>
-
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardPayment"
+                android:id="@+id/cardCompleted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 app:cardCornerRadius="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_below="@id/cardPackages"
                 app:cardBackgroundColor="#D3D3D3"
                 app:cardElevation="30dp"
                 >
-
                 <TextView
-                    android:id="@+id/Payment"
+                    android:id="@+id/Completed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Pending Payment"
+                    android:text="Completed Orders"
                     android:padding="20dp"
                     android:textSize="25dp"
                     android:layout_marginBottom="20dp"
                     android:textColor="@color/black"
                     android:layout_marginLeft="15dp"
                     />
-            </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardDispatch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="30dp"
-                android:layout_below="@id/cardPayment"
-                app:cardBackgroundColor="#D3D3D3"
-                app:cardElevation="30dp"
-                >
-                <TextView
-                    android:id="@+id/Dispatch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ready to Dispatch"
-                    android:padding="20dp"
-                    android:textSize="25dp"
-                    android:layout_marginBottom="20dp"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="15dp"
-                    />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -117,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="30dp"
-                android:layout_below="@id/cardDispatch"
+                android:layout_below="@id/cardCompleted"
                 app:cardBackgroundColor="#D3D3D3"
                 app:cardElevation="30dp"
                 >

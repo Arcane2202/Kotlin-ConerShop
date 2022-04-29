@@ -1,24 +1,20 @@
 package project.app.cornershop
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 
 class SellerHome : Navigation() {
 
     private lateinit var toggleButton : Button
     private lateinit var packages : CardView
     private lateinit var payment : CardView
-    private lateinit var dispatch : CardView
+    private lateinit var completed : CardView
     private lateinit var stock : CardView
 
     private lateinit var cartButton: ImageView
@@ -37,9 +33,9 @@ class SellerHome : Navigation() {
 
         toggleButton = findViewById(R.id.toggleBuyerProf)
         packages = findViewById(R.id.cardPackages)
-        payment = findViewById(R.id.cardPayment)
-        dispatch = findViewById(R.id.cardDispatch)
         stock = findViewById(R.id.cardStocks)
+        completed = findViewById(R.id.cardCompleted)
+
 
         toggleButton.setOnClickListener{
             val intent = Intent(this@SellerHome, Home::class.java)
@@ -73,6 +69,10 @@ class SellerHome : Navigation() {
 
         packages.setOnClickListener{
             val intent = Intent(this@SellerHome, PendingPackaging::class.java)
+            startActivity(intent)
+        }
+        completed.setOnClickListener{
+            val intent = Intent(this@SellerHome, CompletedOrders::class.java)
             startActivity(intent)
         }
     }

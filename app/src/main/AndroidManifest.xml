@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CornerShop">
         <activity
+            android:name=".CompletedOrders"
+            android:exported="false" />
+        <activity
             android:name=".PendingPackaging"
             android:exported="false" />
         <activity
@@ -25,9 +28,6 @@
             android:exported="false" />
         <activity
             android:name=".StockList"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileEditing"
             android:exported="false" />
         <activity
             android:name=".ManageBusiness"

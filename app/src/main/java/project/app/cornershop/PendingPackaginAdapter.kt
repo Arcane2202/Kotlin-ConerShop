@@ -4,11 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import android.content.SharedPreferences
-import android.widget.RelativeLayout
+import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 
@@ -19,6 +17,8 @@ class PendingPackaginAdapter(private var itemList: MutableList<orderData>, priva
     val currUser : String = sharedPreferences.getString("Phone",null).toString()
     private var database: FirebaseDatabase = FirebaseDatabase.getInstance("https://cornershopmanagement-default-rtdb.asia-southeast1.firebasedatabase.app")
     private var reference: DatabaseReference = database.getReference("Cart")
+    private var reference2: DatabaseReference = database.getReference("Cart")
+    private var reference3: DatabaseReference = database.getReference("Cart")
     private lateinit var layoutManager : RecyclerView.LayoutManager
     private var cntxt : Context = context
     var list = ArrayList<ItemCartData>()
@@ -69,6 +69,32 @@ class PendingPackaginAdapter(private var itemList: MutableList<orderData>, priva
             layoutManager = LinearLayoutManager(holder.itemView.context)
             holder.recyclerView.layoutManager = layoutManager
         }
+
+        holder.comp.setOnClickListener {
+            reference2 = database.getReference("completed_orders").child(itemList[position].order_no)
+            database.getReference("pending_orders").child(itemList[position].order_no).get().addOnSuccessListener {
+                reference2.child("customer").setValue(it.child("customer").value.toString())
+                reference2.child("order_no").setValue(it.child("order_no").value.toString())
+                reference2.child("shop_id").setValue(it.child("shop_id").value.toString())
+                reference2.child("status").setValue("completed")
+                reference2.child("total_price").setValue(it.child("total_price").value.toString())
+            }
+            reference3 = database.getReference("completed_orders").child(itemList[position].order_no).child("items_det")
+            database.getReference("pending_orders").child(itemList[position].order_no).child("items_det").get().addOnSuccessListener {
+                var child = it.children
+                child.forEach{
+
+                    reference3.child(it.child("item_id").value.toString()).child("item").setValue(it.child("item").value.toString())
+                    reference3.child(it.child("item_id").value.toString()).child("quantity").setValue(it.child("quantity").value.toString())
+                    reference3.child(it.child("item_id").value.toString()).child("shop_Id").setValue(it.child("shop_Id").value.toString())
+                    reference3.child(it.child("item_id").value.toString()).child("uprice").setValue(it.child("uprice").value.toString())
+                    reference3.child(it.child("item_id").value.toString()).child("item_id").setValue(it.child("item_id").value.toString())
+                    reference3.child(it.child("item_id").value.toString()).child("image").setValue(it.child("image").value.toString())
+                }
+            }
+            database.getReference("pending_orders").child(itemList[position].order_no).removeValue()
+        }
+
         holder.collapse.setOnClickListener {
             holder.recyclerView.visibility = RecyclerView.INVISIBLE
             holder.expand.visibility = ImageView.VISIBLE
@@ -77,6 +103,7 @@ class PendingPackaginAdapter(private var itemList: MutableList<orderData>, priva
         holder.itemView.setOnClickListener{
             clickListener.clickedItem(position)
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -92,6 +119,7 @@ class PendingPackaginAdapter(private var itemList: MutableList<orderData>, priva
         //var scroller : NestedScrollView = view.findViewById(R.id.nesterscrollView)
        // var childlay : RelativeLayout = view.findViewById(R.id.childlay)
          var parlay : RelativeLayout = view.findViewById(R.id.parLay)
+        var comp : ImageView = view.findViewById(R.id.changeStatus)
     }
     interface ClickListener {
         fun clickedItem(position: Int)
